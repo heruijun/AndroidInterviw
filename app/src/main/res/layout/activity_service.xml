@@ -7,10 +7,32 @@
     android:orientation="vertical"
     tools:context="interview.heruijun.com.androidinterview.MainActivity">
 
-    <ListView
-        android:id="@android:id/list"
+    <Button
+        android:id="@+id/start"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:drawSelectorOnTop="false" />
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="开启service" />
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="停止service" />
+
+    <Button
+        android:id="@+id/bind_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="bind方式开启service" />
+
+    <Button
+        android:id="@+id/bind_stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="bind方式停止service" />
 
 </LinearLayout>
