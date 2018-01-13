@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.heruijun.baselibrary.service.HotFixService;
+
 import interview.heruijun.com.androidinterview.R;
 
 /**
@@ -53,7 +55,7 @@ public class ServiceActivity extends AppCompatActivity {
         mStartService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ServiceActivity.this, ServiceExample.class);
+                Intent intent = new Intent(ServiceActivity.this, HotFixService.class);
                 startService(intent);
             }
         });
@@ -61,7 +63,7 @@ public class ServiceActivity extends AppCompatActivity {
         mStopService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ServiceActivity.this, ServiceExample.class);
+                Intent intent = new Intent(ServiceActivity.this, HotFixService.class);
                 stopService(intent);
             }
         });

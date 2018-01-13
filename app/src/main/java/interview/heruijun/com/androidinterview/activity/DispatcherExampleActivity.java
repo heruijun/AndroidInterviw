@@ -3,7 +3,6 @@ package interview.heruijun.com.androidinterview.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,8 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.heruijun.baselibrary.activity.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ import interview.heruijun.com.androidinterview.view.DispatcherLinearLayout;
  * Created by heruijun on 2018/1/13.
  */
 
-public class DispatcherExampleActivity extends AppCompatActivity {
+public class DispatcherExampleActivity extends BaseActivity {
 
     private ListView mListView;
     private DispatcherAdapter mAdapter;

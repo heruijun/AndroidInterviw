@@ -1,9 +1,9 @@
 package interview.heruijun.com.androidinterview
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.heruijun.baselibrary.activity.BaseActivity
 
-class NextActivity : AppCompatActivity() {
+class NextActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
