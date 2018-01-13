@@ -4,9 +4,9 @@ package com.heruijun.javatest.normal;
  * Created by heruijun on 2018/1/12.
  */
 
-public class InitOrder {
+public class ClassInitOrder {
 
-    public InitOrder() {
+    public ClassInitOrder() {
         System.out.println("3");
     }
 
@@ -23,7 +23,7 @@ public class InitOrder {
     }
 
     public static void main(String[] args) {
-        InitOrder initOrder = new InitOrder();
+        ClassInitOrder initOrder = new ClassInitOrder();
         initOrder.say();
     }
 

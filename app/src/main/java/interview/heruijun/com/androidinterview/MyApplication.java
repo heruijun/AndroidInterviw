@@ -21,5 +21,12 @@ public class MyApplication extends Application {
         }
         LeakCanary.install(this);
         BlockCanary.install(this, new AppBlockCanaryContext()).start();
+
+        // 完成andFix模块的初始化
+        initAndFix();
+    }
+
+    private void initAndFix() {
+        AndFixPatchManager.getInstance().initPatch(this);
     }
 }

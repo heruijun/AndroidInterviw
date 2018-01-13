@@ -18,6 +18,7 @@ import java.util.List;
 
 import interview.heruijun.com.androidinterview.activity.DispatcherExampleActivity;
 import interview.heruijun.com.androidinterview.activity.DispatcherViewActivity;
+import interview.heruijun.com.androidinterview.classloader.ClassloaderActivity;
 import interview.heruijun.com.androidinterview.normalwebview.NormalwebviewActivity;
 import interview.heruijun.com.androidinterview.service.ServiceActivity;
 import interview.heruijun.com.androidinterview.util.Utils;
@@ -39,8 +40,9 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
     private static final String LINE_8 = "列表的事件分发";
     private static final String LINE_9 = "事件分发机制";
     private static final String LINE_10 = "service用法";
+    private static final String LINE_11 = "插件化与热修复";
 
-    private List<String> lines = Arrays.asList(LINE_1, LINE_2, LINE_3, LINE_4, LINE_5, LINE_6, LINE_7, LINE_8, LINE_9, LINE_10);
+    private List<String> lines = Arrays.asList(LINE_1, LINE_2, LINE_3, LINE_4, LINE_5, LINE_6, LINE_7, LINE_8, LINE_9, LINE_10, LINE_11);
 
     private MyHandler myHandler = new MyHandler(this);
 
@@ -94,6 +96,9 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
                 break;
             case LINE_10:
                 startActivity(new Intent(MainActivity.this, ServiceActivity.class));
+                break;
+            case LINE_11:
+                startActivity(new Intent(MainActivity.this, ClassloaderActivity.class));
                 break;
         }
     }

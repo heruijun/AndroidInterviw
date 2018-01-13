@@ -35,6 +35,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.tencent.sonic:sdk:2.0.0'
+    compile 'com.alipay.euler:andfix:0.5.0@aar'
 
     // most often used way, enable notification to notify block event
     compile 'com.github.markzhai:blockcanary-android:1.5.0'
