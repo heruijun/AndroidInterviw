@@ -27,6 +27,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.DispatcherViewActivity"/>
         <activity
             android:name=".webview.BrowserActivity"
             android:process=":com.inverview.browser" />

@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import interview.heruijun.com.androidinterview.activity.DispatcherExampleActivity;
+import interview.heruijun.com.androidinterview.activity.DispatcherViewActivity;
 import interview.heruijun.com.androidinterview.normalwebview.NormalwebviewActivity;
 import interview.heruijun.com.androidinterview.util.Utils;
 import interview.heruijun.com.androidinterview.webview.WebviewActivity;
@@ -35,8 +36,9 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
     private static final String LINE_6 = "腾讯webview";
     private static final String LINE_7 = "内存抖动";
     private static final String LINE_8 = "列表的事件分发";
+    private static final String LINE_9 = "事件分发机制";
 
-    private List<String> lines = Arrays.asList(LINE_1, LINE_2, LINE_3, LINE_4, LINE_5, LINE_6, LINE_7, LINE_8);
+    private List<String> lines = Arrays.asList(LINE_1, LINE_2, LINE_3, LINE_4, LINE_5, LINE_6, LINE_7, LINE_8, LINE_9);
 
     private MyHandler myHandler = new MyHandler(this);
 
@@ -84,6 +86,9 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
                 break;
             case LINE_8:
                 startActivity(new Intent(MainActivity.this, DispatcherExampleActivity.class));
+                break;
+            case LINE_9:
+                startActivity(new Intent(MainActivity.this, DispatcherViewActivity.class));
                 break;
         }
     }

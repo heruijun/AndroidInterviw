@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<interview.heruijun.com.androidinterview.view.CustomLinearLayoutA xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dispatcher_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <interview.heruijun.com.androidinterview.view.CustomLinearLayoutB
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <interview.heruijun.com.androidinterview.view.CustomTextView
+            android:id="@+id/myTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击" />
+
+    </interview.heruijun.com.androidinterview.view.CustomLinearLayoutB>
+
+</interview.heruijun.com.androidinterview.view.CustomLinearLayoutA>
