@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        var messagingIframe;
+
+        (function(){
+            // 创建队列iframe
+            function _createQueueReadyIframe(doc) {
+                messagingIframe = doc.createElement('iframe');
+                messagingIframe.style.display = 'none';
+                doc.documentElement.appendChild(messagingIframe);
+            }
+
+            var doc = document;
+            _createQueueReadyIframe(doc);
+        })()
+    </script>
+</head>
+<body>
+    <button id="prompt">prompt</button>
+    <button id="doSend">doSend</button>
+    <script>
+        document.getElementById('prompt').addEventListener('click', function(){
+            var data = {
+                action:'wkjs',
+                params:'hello',
+                callback:'yeah',
+            };
+            var jsonData = JSON.stringify([data])
+            prompt(jsonData)
+        }, false)
+
+        document.getElementById('doSend').addEventListener('click', function(){
+            messagingIframe.src = 'wkjs://order/action?query'
+        }, false)
+    </script>
+</body>
+</html>

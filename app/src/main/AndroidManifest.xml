@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NextActivity">
+        <activity android:name=".activity.NextActivity">
             <intent-filter>
                 <action android:name="com.interview.next" />
 
