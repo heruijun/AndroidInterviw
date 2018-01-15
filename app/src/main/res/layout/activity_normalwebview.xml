@@ -6,7 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <WebView
+    <Button
+        android:id="@+id/nativeCallJs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Native调用js"/>
+
+    <interview.heruijun.com.androidinterview.normalwebview.MyWebview
         android:id="@+id/mWebviewExample"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

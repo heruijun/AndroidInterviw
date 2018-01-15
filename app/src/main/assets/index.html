@@ -8,6 +8,10 @@
     <script>
         var messagingIframe;
 
+        function callJS(){
+            alert("Android调用了JS的callJS方法");
+        }
+        
         (function(){
             // 创建队列iframe
             function _createQueueReadyIframe(doc) {
