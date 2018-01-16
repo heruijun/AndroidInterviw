@@ -18,7 +18,6 @@ import com.tencent.sonic.sdk.SonicConfig;
 import com.tencent.sonic.sdk.SonicEngine;
 import com.tencent.sonic.sdk.SonicSessionConfig;
 
-import interview.heruijun.com.androidinterview.MainActivity;
 import interview.heruijun.com.androidinterview.R;
 
 public class WebviewActivity extends AppCompatActivity {

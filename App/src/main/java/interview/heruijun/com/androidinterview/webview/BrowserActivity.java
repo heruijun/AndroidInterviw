@@ -31,7 +31,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import interview.heruijun.com.androidinterview.MainActivity;
 import interview.heruijun.com.androidinterview.R;
 
 public class BrowserActivity extends AppCompatActivity {

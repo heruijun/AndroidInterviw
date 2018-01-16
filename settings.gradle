@@ -1,1 +1,1 @@
-include ':app', ':JsBridge', ':DesignPatterns', ':Arithmetic', ':JavaTest', ':BaseLibrary'
+include ':App', ':JsBridge', ':DesignPatterns', ':Arithmetic', ':JavaTest', ':BaseLibrary'

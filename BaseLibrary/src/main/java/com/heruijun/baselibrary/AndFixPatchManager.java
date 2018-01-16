@@ -1,10 +1,9 @@
-package interview.heruijun.com.androidinterview;
+package com.heruijun.baselibrary;
 
 import android.content.Context;
 
 import com.alipay.euler.andfix.patch.PatchManager;
-
-import interview.heruijun.com.androidinterview.util.Utils;
+import com.heruijun.baselibrary.util.Utils;
 
 /**
  * Created by heruijun on 2018/1/13.

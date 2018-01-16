@@ -8,11 +8,12 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "interview.heruijun.com.androidinterview"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -25,23 +26,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:${android_support_version}"
-    implementation "com.android.support:design:${android_support_version}"
-    implementation "com.android.support:cardview-v7:${android_support_version}"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile 'com.tencent.sonic:sdk:2.0.0'
-    compile 'com.alipay.euler:andfix:0.5.0@aar'
-
-    // most often used way, enable notification to notify block event
-    compile 'com.github.markzhai:blockcanary-android:1.5.0'
-    // this way you only enable BlockCanary in debug package
-    // debugCompile 'com.github.markzhai:blockcanary-android:1.5.0'
-    // releaseCompile 'com.github.markzhai:blockcanary-no-op:1.5.0'
 
     // Anko Commons
     compile "org.jetbrains.anko:anko-commons:$anko_version"
@@ -88,7 +72,5 @@ dependencies {
     // Support-v4 (Anko Layouts)
     compile "org.jetbrains.anko:anko-support-v4:$anko_version"
 
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     compile project(path: ':BaseLibrary')
 }

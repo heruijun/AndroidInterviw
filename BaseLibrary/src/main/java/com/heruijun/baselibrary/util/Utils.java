@@ -1,4 +1,4 @@
-package interview.heruijun.com.androidinterview.util;
+package com.heruijun.baselibrary.util;
 
 import android.app.ActivityManager;
 import android.content.Context;
