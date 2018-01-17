@@ -1,6 +1,5 @@
 package interview.heruijun.com.androidinterview.activity;
 
-import android.Manifest;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Build;
@@ -10,25 +9,15 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.PermissionChecker;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import java.io.Reader;
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.List;
-
-import cn.hikyson.android.godeye.toolbox.CrashFileProvider;
-import cn.hikyson.android.godeye.toolbox.Serializer;
-import cn.hikyson.android.godeye.toolbox.StartupTracer;
-import cn.hikyson.godeye.core.GodEye;
-import cn.hikyson.godeye.monitor.GodEyeMonitor;
-import cn.hikyson.godeye.monitor.utils.GsonUtil;
 import interview.heruijun.com.androidinterview.R;
 import interview.heruijun.com.androidinterview.classloader.ClassloaderActivity;
 import interview.heruijun.com.androidinterview.normalwebview.NormalwebviewActivity;
@@ -63,19 +52,19 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        GodEye.instance().installAll(getApplication(), new CrashFileProvider(this, new Serializer() {
-            @Override
-            public String serialize(Object o) {
-                return GsonUtil.toJson(o);
-            }
-
-            @Override
-            public <T> T deserialize(Reader reader, Class<T> clz) {
-                return GsonUtil.fromJson(reader, clz);
-            }
-        }));
-        GodEyeMonitor.work(this);
-        StartupTracer.get().onSplashCreate();
+//        GodEye.instance().installAll(getApplication(), new CrashFileProvider(this, new Serializer() {
+//            @Override
+//            public String serialize(Object o) {
+//                return GsonUtil.toJson(o);
+//            }
+//
+//            @Override
+//            public <T> T deserialize(Reader reader, Class<T> clz) {
+//                return GsonUtil.fromJson(reader, clz);
+//            }
+//        }));
+//        GodEyeMonitor.work(this);
+//        StartupTracer.get().onSplashCreate();
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, lines);
         setListAdapter(adapter);
         this.getListView().setOnItemClickListener(this);
@@ -158,7 +147,7 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        GodEyeMonitor.shutDown();
-        GodEye.instance().uninstallAll();
+//        GodEyeMonitor.shutDown();
+//        GodEye.instance().uninstallAll();
     }
 }

@@ -10,7 +10,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.PermissionChecker;
 import android.widget.Toast;
 
-import cn.hikyson.android.godeye.toolbox.StartupTracer;
 import interview.heruijun.com.androidinterview.R;
 
 /**
@@ -24,7 +23,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 100);
-        StartupTracer.get().onSplashCreate();
+        // StartupTracer.get().onSplashCreate();
     }
 
     @Override
