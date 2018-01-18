@@ -25,6 +25,7 @@ public class ServiceActivity extends AppCompatActivity {
     private Button mStopService;
     private Button mBindStartService;
     private Button mBindStopService;
+    private Button mStartIntentService;
     private ServiceExample.DownloadBinder downloadBinder;
 
     private ServiceConnection connection = new ServiceConnection() {
@@ -51,6 +52,8 @@ public class ServiceActivity extends AppCompatActivity {
 
         mBindStartService = findViewById(R.id.bind_start);
         mBindStopService = findViewById(R.id.bind_stop);
+
+        mStartIntentService = findViewById(R.id.start_intentservice);
 
         mStartService.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +83,25 @@ public class ServiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 unbindService(connection);
+            }
+        });
+
+        mStartIntentService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ServiceActivity.this, MyIntentService.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("taskName", "task1");
+                i.putExtras(bundle);
+                startService(i);
+
+                Intent i2 = new Intent(ServiceActivity.this, MyIntentService.class);
+                Bundle bundle2 = new Bundle();
+                bundle2.putString("taskName", "task2");
+                i2.putExtras(bundle2);
+                startService(i2);
+
+                startService(i);
             }
         });
 

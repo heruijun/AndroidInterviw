@@ -47,7 +47,13 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".classloader.ClassloaderActivity"></activity>
+        <service android:name=".service.MyIntentService" />
+
+        <activity android:name=".classloader.ClassloaderActivity" />
+        <activity
+            android:name=".activity.HandlerExample"
+            android:label="@string/title_activity_handler_example"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -18,11 +18,14 @@ import android.widget.Toast;
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.List;
+
 import interview.heruijun.com.androidinterview.R;
 import interview.heruijun.com.androidinterview.classloader.ClassloaderActivity;
 import interview.heruijun.com.androidinterview.normalwebview.NormalwebviewActivity;
 import interview.heruijun.com.androidinterview.service.ServiceActivity;
+
 import com.heruijun.baselibrary.util.Utils;
+
 import interview.heruijun.com.androidinterview.webview.WebviewActivity;
 
 /**
@@ -68,6 +71,7 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1, lines);
         setListAdapter(adapter);
         this.getListView().setOnItemClickListener(this);
+        // ActivityMgr.getInstance().addActivity(this);     // 模拟内存泄漏
     }
 
     @Override
@@ -90,7 +94,8 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
                 startActivity(intent);
                 break;
             case LINE_5:
-                myHandler.sendEmptyMessage(0);
+                // myHandler.sendEmptyMessage(0);
+                startActivity(new Intent(MainActivity.this, HandlerExample.class));
                 break;
             case LINE_6:
                 intent = new Intent(MainActivity.this, WebviewActivity.class);
