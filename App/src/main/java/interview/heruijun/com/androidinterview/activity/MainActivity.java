@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
@@ -21,9 +20,11 @@ import java.util.List;
 
 import interview.heruijun.com.androidinterview.R;
 import interview.heruijun.com.androidinterview.classloader.ClassloaderActivity;
+import com.heruijun.baselibrary.config.RouterPath;
 import interview.heruijun.com.androidinterview.normalwebview.NormalwebviewActivity;
 import interview.heruijun.com.androidinterview.service.ServiceActivity;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.heruijun.baselibrary.util.Utils;
 
 import interview.heruijun.com.androidinterview.webview.WebviewActivity;
@@ -34,10 +35,11 @@ import interview.heruijun.com.androidinterview.webview.WebviewActivity;
 
 public class MainActivity extends ListActivity implements AdapterView.OnItemClickListener {
 
+    private static final String LINE_0 = "Activity相关";
     private static final String LINE_1 = "普通webview";
-    private static final String LINE_2 = "生成UUID";
+    private static final String LINE_2 = "自定义控件";
     private static final String LINE_3 = "获取当前进程";
-    private static final String LINE_4 = "隐式跳转";
+    private static final String LINE_4 = "Android动画";
     private static final String LINE_5 = "Handler正常用法";
     private static final String LINE_6 = "腾讯webview";
     private static final String LINE_7 = "内存抖动";
@@ -46,7 +48,7 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
     private static final String LINE_10 = "service用法";
     private static final String LINE_11 = "插件化与热修复";
 
-    private List<String> lines = Arrays.asList(LINE_1, LINE_2, LINE_3, LINE_4, LINE_5, LINE_6, LINE_7, LINE_8, LINE_9, LINE_10, LINE_11);
+    private List<String> lines = Arrays.asList(LINE_0, LINE_1, LINE_2, LINE_3, LINE_4, LINE_5, LINE_6, LINE_7, LINE_8, LINE_9, LINE_10, LINE_11);
 
     private MyHandler myHandler = new MyHandler(this);
 
@@ -79,19 +81,23 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
         String lineName = lines.get(position);
         Intent intent = null;
         switch (lineName) {
+            case LINE_0:
+                // startActivity(new Intent(MainActivity.this, InterviewActivity.class));
+                ARouter.getInstance().build(RouterPath.PATH_ACTIVITY).navigation();
+                break;
             case LINE_1:
                 startActivity(new Intent(MainActivity.this, NormalwebviewActivity.class));
                 break;
             case LINE_2:
-                Toast.makeText(MainActivity.this, Utils.createUUID(), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(MainActivity.this, Utils.createUUID(), Toast.LENGTH_SHORT).show();    // UUID生成
+                startActivity(new Intent(MainActivity.this, WidgetActivity.class));
                 break;
             case LINE_3:
                 Toast.makeText(MainActivity.this,
                         Utils.getRunningProcess(MainActivity.this).processName, Toast.LENGTH_SHORT).show();
                 break;
             case LINE_4:
-                intent = new Intent("com.interview.next");
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, AnimationActivity.class));
                 break;
             case LINE_5:
                 // myHandler.sendEmptyMessage(0);

@@ -29,7 +29,7 @@ public class CustomLinearLayoutB extends LinearLayout {
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         // return super.onInterceptTouchEvent(ev);
         // return true;
-        return false;
+        return true;
     }
 
     @Override
@@ -40,6 +40,6 @@ public class CustomLinearLayoutB extends LinearLayout {
         }
         // return super.onTouchEvent(event);
         // return false;
-        return false;
+        return true;
     }
 }

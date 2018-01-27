@@ -15,4 +15,7 @@
     <string name="edit">编辑</string>
     <string name="title_activity_normalwebview">NormalwebviewActivity</string>
     <string name="title_activity_handler_example">HandlerExample</string>
+    <string name="title_activity_interview">InterviewActivity</string>
+    <string name="title_activity_animation">AnimationActivity</string>
+    <string name="title_activity_widget">WidgetActivity</string>
 </resources>

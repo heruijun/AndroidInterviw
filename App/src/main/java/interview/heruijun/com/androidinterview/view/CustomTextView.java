@@ -30,6 +30,6 @@ public class CustomTextView extends AppCompatTextView {
         }
         // return super.onTouchEvent(event);
         // return true;
-        return false;
+        return true;
     }
 }

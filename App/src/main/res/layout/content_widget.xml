@@ -4,12 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="interview.heruijun.com.androidinterview.activity.NextActivity">
-
-    <Button
-        android:id="@+id/jump"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="跳转" />
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="interview.heruijun.com.androidinterview.activity.WidgetActivity"
+    tools:showIn="@layout/activity_widget">
 
 </android.support.constraint.ConstraintLayout>

@@ -14,6 +14,12 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
     }
     buildTypes {
         release {
@@ -72,6 +78,8 @@ dependencies {
 
     // Support-v4 (Anko Layouts)
     compile "org.jetbrains.anko:anko-support-v4:$anko_version"
+
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
 
     compile project(path: ':BaseLibrary')
 }
