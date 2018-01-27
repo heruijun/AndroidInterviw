@@ -2,6 +2,7 @@ package interview.heruijun.com.androidinterview.activity;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,7 +21,9 @@ import java.util.List;
 
 import interview.heruijun.com.androidinterview.R;
 import interview.heruijun.com.androidinterview.classloader.ClassloaderActivity;
+
 import com.heruijun.baselibrary.config.RouterPath;
+
 import interview.heruijun.com.androidinterview.normalwebview.NormalwebviewActivity;
 import interview.heruijun.com.androidinterview.service.ServiceActivity;
 
@@ -35,6 +38,7 @@ import interview.heruijun.com.androidinterview.webview.WebviewActivity;
 
 public class MainActivity extends ListActivity implements AdapterView.OnItemClickListener {
 
+    private static final String TAG = "MainActivity";
     private static final String LINE_0 = "Activity相关";
     private static final String LINE_1 = "普通webview";
     private static final String LINE_2 = "自定义控件";
@@ -74,6 +78,35 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
         setListAdapter(adapter);
         this.getListView().setOnItemClickListener(this);
         // ActivityMgr.getInstance().addActivity(this);     // 模拟内存泄漏
+
+        Uri uri = getIntent().getData();
+        if (uri != null) {
+            // 完整的url信息
+            String url = uri.toString();
+            Log.e(TAG, "url: " + url);
+            // scheme部分
+            String scheme = uri.getScheme();
+            Log.e(TAG, "scheme: " + scheme);
+            // host部分
+            String host = uri.getHost();
+            Log.e(TAG, "host: " + host);
+            //port部分
+            int port = uri.getPort();
+            Log.e(TAG, "host: " + port);
+            // 访问路劲
+            String path = uri.getPath();
+            Log.e(TAG, "path: " + path);
+            List<String> pathSegments = uri.getPathSegments();
+            // Query部分
+            String query = uri.getQuery();
+            Log.e(TAG, "query: " + query);
+            //获取指定参数值
+            String id = uri.getQueryParameter("id");
+            Log.e(TAG, "id: " + id);
+            String name = uri.getQueryParameter("name");
+            Log.e(TAG, "name: " + name);
+        }
+        // ARouter.getInstance().build(uri).navigation();
     }
 
     @Override

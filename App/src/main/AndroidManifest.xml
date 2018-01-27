@@ -23,7 +23,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <data
+                    android:host="home"
+                    android:path="/main"
+                    android:port="8888"
+                    android:scheme="nongjia" />
+
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.NextActivity">
             <intent-filter>
                 <action android:name="com.interview.next" />

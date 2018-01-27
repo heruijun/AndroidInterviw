@@ -3,12 +3,17 @@ package interview.heruijun.com.androidinterview.activity;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.PermissionChecker;
 import android.widget.Toast;
+
+import java.util.List;
 
 import interview.heruijun.com.androidinterview.R;
 
@@ -33,8 +38,14 @@ public class SplashActivity extends Activity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    PackageManager packageManager = getPackageManager();
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("nongjia://home:8888/main?id=1&name=aa"));
+                    List<ResolveInfo> activities = packageManager.queryIntentActivities(intent, 0);
+                    boolean isValid = !activities.isEmpty();
+                    if (isValid) {
+                        startActivity(intent);
+                    }
+
                     finish();
                 }
             }, 2000);
