@@ -1,6 +1,7 @@
 package com.heruijun.baselibrary;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
@@ -13,6 +14,8 @@ import com.squareup.leakcanary.LeakCanary;
  */
 
 public class MyApplication extends MultiDexApplication {
+
+    private static Handler sHandler;
 
     @Override
     public void onCreate() {
@@ -38,6 +41,14 @@ public class MyApplication extends MultiDexApplication {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         MultiDex.install(this);
+    }
+
+
+    public static Handler getHandler() {
+        if (sHandler == null) {
+            sHandler = new Handler();
+        }
+        return sHandler;
     }
 
     private void initAndFix() {

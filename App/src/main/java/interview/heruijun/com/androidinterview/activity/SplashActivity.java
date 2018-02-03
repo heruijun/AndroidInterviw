@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.PermissionChecker;
@@ -15,6 +14,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import interview.heruijun.com.androidinterview.MineApplication;
 import interview.heruijun.com.androidinterview.R;
 
 /**
@@ -35,7 +35,7 @@ public class SplashActivity extends Activity {
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (PermissionChecker.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PermissionChecker.PERMISSION_GRANTED) {
             Toast.makeText(this, "grant " + Manifest.permission.WRITE_EXTERNAL_STORAGE + " permission.", Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(new Runnable() {
+            MineApplication.getHandler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     PackageManager packageManager = getPackageManager();
