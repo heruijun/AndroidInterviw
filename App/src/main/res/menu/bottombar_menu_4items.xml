@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/black"
+    app:bbn_alwaysShowLabels="true"
     app:bbn_badgeColor="#FFFF0000"
     app:bbn_rippleColor="#33ffffff">
 

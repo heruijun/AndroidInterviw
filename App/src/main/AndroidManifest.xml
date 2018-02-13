@@ -60,7 +60,9 @@
             android:name=".service.ServiceExample"
             android:enabled="true"
             android:exported="true" />
+
         <service android:name=".service.MyIntentService" />
+        <service android:name=".service.TaskIntentService" />
 
         <activity android:name=".classloader.ClassloaderActivity" />
         <activity

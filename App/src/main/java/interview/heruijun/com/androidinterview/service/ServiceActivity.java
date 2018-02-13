@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -20,6 +21,8 @@ import interview.heruijun.com.androidinterview.R;
  */
 
 public class ServiceActivity extends AppCompatActivity {
+
+    private static final String TAG = ServiceActivity.class.getSimpleName();
 
     private Button mStartService;
     private Button mStopService;
@@ -46,6 +49,7 @@ public class ServiceActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
+        Log.e(TAG, "onCreate");
 
         mStartService = findViewById(R.id.start);
         mStopService = findViewById(R.id.stop);
@@ -105,5 +109,47 @@ public class ServiceActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e(TAG, "onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e(TAG, "onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e(TAG, "onStop");
+        Intent intent = new Intent(ServiceActivity.this, TaskIntentService.class);
+        intent.putExtra("task", "stop");
+        startService(intent);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e(TAG, "onRestart");
+        Intent intent = new Intent(ServiceActivity.this, TaskIntentService.class);
+        intent.putExtra("task", "start");
+        startService(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e(TAG, "onDestory");
     }
 }

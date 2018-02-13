@@ -1,4 +1,4 @@
-package com.heruijun.baselibrary.util;
+package com.heruijun.baselibrary.util.glide;
 
 /**
  * Created by heruijun on 2018/2/1.
