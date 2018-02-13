@@ -1,6 +1,7 @@
 package com.heruijun.baselibrary.util.glide;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Registry;
@@ -16,8 +17,10 @@ import java.io.InputStream;
  */
 @GlideModule
 public class OkHttpLibraryGlideModule extends LibraryGlideModule {
+
     @Override
     public void registerComponents(Context context, Glide glide, Registry registry) {
+        // Log.e("okhttp", "注册");
         registry.replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory());
     }
 }
