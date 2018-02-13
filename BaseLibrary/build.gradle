@@ -72,4 +72,7 @@ dependencies {
     compile 'it.sephiroth.android.library.bottomnavigation:bottom-navigation:2.0.1-rc1'
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
 
+    // 弹框封装
+    compile 'com.github.razerdp:BasePopup:1.9.3'
+
 }
