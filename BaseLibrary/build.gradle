@@ -74,5 +74,7 @@ dependencies {
 
     // 弹框封装
     compile 'com.github.razerdp:BasePopup:1.9.3'
+    // 可拖拽的图片
+    compile 'com.github.chrisbanes:PhotoView:2.1.3'
 
 }
