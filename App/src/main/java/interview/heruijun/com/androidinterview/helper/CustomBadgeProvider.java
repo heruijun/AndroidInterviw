@@ -67,7 +67,7 @@ public class CustomBadgeProvider extends BadgeProvider {
             paint.setColor(color);
 
             textPaint.setColor(Color.WHITE);
-            textPaint.setTextSize(24);
+            textPaint.setTextSize(18);
         }
 
         @Override
@@ -103,12 +103,12 @@ public class CustomBadgeProvider extends BadgeProvider {
 
         @Override
         public int getIntrinsicWidth() {
-            return 50;
+            return 35;
         }
 
         @Override
         public int getIntrinsicHeight() {
-            return 50;
+            return 35;
         }
     }
 }

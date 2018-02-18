@@ -12,13 +12,14 @@ import com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.model.GlideUrl;
 import com.github.chrisbanes.photoview.PhotoView;
-import com.heruijun.baselibrary.fragment.BaseFragment;
+import com.heruijun.baselibrary.fragment.LazyFragment;
 import com.heruijun.baselibrary.util.glide.GlideApp;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import interview.heruijun.com.androidinterview.R;
+import interview.heruijun.com.androidinterview.activity.InterviewActivity;
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -35,10 +36,13 @@ import okio.Source;
  * Created by heruijun on 2018/2/18.
  */
 
-public class ImageViewFragment extends BaseFragment {
+public class ImageViewFragment extends LazyFragment {
 
     private ProgressBar mProgessBar;
     private PhotoView mImage;
+    private boolean isPrepared;
+    private String currentImg;
+    private InterviewActivity interviewActivity;
 
     static ImageViewFragment newInstance(String imgUrl) {
         ImageViewFragment imageViewFragment = new ImageViewFragment();
@@ -48,40 +52,66 @@ public class ImageViewFragment extends BaseFragment {
         return imageViewFragment;
     }
 
-    class LoggingInterceptor implements Interceptor {
-        @Override
-        public Response intercept(Interceptor.Chain chain) throws IOException {
-            Request request = chain.request();
-
-            long t1 = System.nanoTime();
-//            logger.info(String.format("Sending request %s on %s%n%s",
-//                    request.url(), chain.connection(), request.headers()));
-
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mProgessBar.setVisibility(View.VISIBLE);
-                }
-            });
-
-            Response response = chain.proceed(request);
-
-            long t2 = System.nanoTime();
-//            logger.info(String.format("Received response for %s in %.1fms%n%s",
-//                    response.request().url(), (t2 - t1) / 1e6d, response.headers()));
-
-            return response;
-        }
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_imageview, container, false);
 
+        interviewActivity = (InterviewActivity) getActivity();
         mProgessBar = view.findViewById(R.id.progressBar);
         mImage = view.findViewById(R.id.image);
+        currentImg = getArguments().getString("imgUrl");
 
+        isPrepared = true;
+
+        lazyLoad();
+
+        if (interviewActivity.getImageSet() != null && interviewActivity.getImageSet().size() > 0) {
+            for (String img : interviewActivity.getImageSet()) {
+                if (img.equals(currentImg)) {
+                    mProgessBar.setVisibility(View.GONE);
+                    GlideApp.with(getActivity()).load(currentImg)
+                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                            //.skipMemoryCache(true)
+                            //.miniThumb(1000)
+                            //.centerCrop()
+                            //.transition(withCrossFade())
+                            .into(mImage);
+                }
+            }
+        }
+
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    protected void lazyLoad() {
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+
+        boolean hasCached = false;
+
+        if (interviewActivity.getImageSet() != null && interviewActivity.getImageSet().size() > 0) {
+            for (String img : interviewActivity.getImageSet()) {
+                if (img.equals(currentImg)) {
+                    hasCached = true;
+                    break;
+                }
+            }
+        }
+
+        if (hasCached) {
+            return;
+        }
+
+        // 开始缓存
+        mProgessBar.setVisibility(View.VISIBLE);
         final ProgressListener progressListener = new ProgressListener() {
             @Override
             public void update(long bytesRead, long contentLength) {
@@ -92,6 +122,7 @@ public class ImageViewFragment extends BaseFragment {
                 // mProgessBar.setProgress(progress);
                 if (bytesRead == contentLength) {
                     Log.e("文件长度", "加载完成");
+                    ((InterviewActivity) getActivity()).cacheImg(currentImg);
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -104,11 +135,15 @@ public class ImageViewFragment extends BaseFragment {
 
         GlideApp.get(getActivity()).getRegistry()
                 .replace(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(new OkHttpClient.Builder()
-                        .addNetworkInterceptor(new LoggingInterceptor())
                         .addNetworkInterceptor(new Interceptor() {
                             @Override
                             public Response intercept(Chain chain) throws IOException {
-                                Response originalResponse = chain.proceed(chain.request());
+                                Request request = chain.request();
+
+//            logger.info(String.format("Sending request %s on %s%n%s",
+//                    request.url(), chain.connection(), request.headers()));
+
+                                Response originalResponse = chain.proceed(request);
                                 return originalResponse.newBuilder()
                                         .body(new ProgressResponseBody(originalResponse.body(), progressListener))
                                         .build();
@@ -116,18 +151,14 @@ public class ImageViewFragment extends BaseFragment {
                         })
                         .build()));
 
-        GlideApp.with(getActivity()).load(getArguments().getString("imgUrl"))
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(true)
+        GlideApp.with(getActivity()).load(currentImg)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                //.skipMemoryCache(true)
                 //.miniThumb(1000)
                 //.centerCrop()
                 //.transition(withCrossFade())
                 .into(mImage);
-        // GlideUtil.loadImage(getContext(), TEST_IMG, mImage);
-
-        return view;
     }
-
 
     private static class ProgressResponseBody extends ResponseBody {
 
