@@ -94,7 +94,8 @@ public class CustomBadgeProvider extends BadgeProvider {
         }
 
         @Override
-        public void setColorFilter(final ColorFilter colorFilter) { }
+        public void setColorFilter(final ColorFilter colorFilter) {
+        }
 
         @Override
         public int getOpacity() {
