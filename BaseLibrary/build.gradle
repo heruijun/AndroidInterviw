@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.heruijun'
 
 android {
     compileSdkVersion ANDROID_BUILD_SDK_VERSION as int
@@ -69,7 +71,8 @@ dependencies {
         transitive = false
     }
 
-    compile 'it.sephiroth.android.library.bottomnavigation:bottom-navigation:2.0.1-rc1'
+    // compile 'it.sephiroth.android.library.bottomnavigation:bottom-navigation:2.0.1-rc1'
+    compile 'com.github.heruijun:BottomNav:1.0-SNAPSHOT'
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
 
     // 弹框封装

@@ -3,12 +3,14 @@ package interview.heruijun.com.androidinterview.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.heruijun.baselibrary.config.RouterPath;
@@ -63,33 +65,33 @@ public class InterviewActivity extends AppCompatActivity implements BottomNaviga
         CustomBadgeProvider provider = (CustomBadgeProvider) mBottomNavigation.getBadgeProvider();
         provider.show(R.id.bbn_item3, 1);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                Intent intent = new Intent("com.interview.next");     // 隐士跳转
-////                startActivity(intent);
-////                 startActivity(new Intent(InterviewActivity.this, Main2Activity.class));
-//
-//                int selectedIndex = mBottomNavigation.getSelectedIndex() + 1;
-//                final int totalCount = mBottomNavigation.getMenuItemCount();
-//
-//                if (selectedIndex >= totalCount) {
-//                    selectedIndex = 0;
-//                }
-//
-//                final int itemId = mBottomNavigation.getMenuItemId(selectedIndex);
-//
-//                CustomBadgeProvider provider = (CustomBadgeProvider) mBottomNavigation.getBadgeProvider();
-//
-//                if (provider.hasBadge(itemId)) {
-//                    int count = provider.getBadgeTextCount(itemId);
-//                    provider.show(itemId, count + 1);
-//                } else {
-//                    provider.show(itemId, 1);
-//                }
-//            }
-//        });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent("com.interview.next");     // 隐士跳转
+//                startActivity(intent);
+//                 startActivity(new Intent(InterviewActivity.this, Main2Activity.class));
+
+                int selectedIndex = mBottomNavigation.getSelectedIndex() + 1;
+                final int totalCount = mBottomNavigation.getMenuItemCount();
+
+                if (selectedIndex >= totalCount) {
+                    selectedIndex = 0;
+                }
+
+                final int itemId = mBottomNavigation.getMenuItemId(selectedIndex);
+
+                CustomBadgeProvider provider = (CustomBadgeProvider) mBottomNavigation.getBadgeProvider();
+
+                if (provider.hasBadge(itemId)) {
+                    int count = provider.getBadgeTextCount(itemId);
+                    provider.show(itemId, count + 1);
+                } else {
+                    provider.show(itemId, 1);
+                }
+            }
+        });
     }
 
     @Override
