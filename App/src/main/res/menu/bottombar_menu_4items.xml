@@ -12,21 +12,21 @@
     <item
         android:id="@+id/bbn_item1"
         android:icon="@mipmap/ic_launcher"
-        android:title="Cloud Sync" />
+        android:title="@string/menu1" />
 
     <item
         android:id="@+id/bbn_item2"
         android:icon="@mipmap/ic_launcher"
-        android:title="Chromecast" />
+        android:title="@string/menu2" />
 
     <item
         android:id="@+id/bbn_item3"
         android:icon="@mipmap/ic_launcher"
-        android:title="Mail" />
+        android:title="@string/menu3" />
 
     <item
         android:id="@+id/bbn_item4"
         android:icon="@mipmap/ic_launcher"
-        android:title="List" />
+        android:title="@string/menu4" />
 
 </menu>
