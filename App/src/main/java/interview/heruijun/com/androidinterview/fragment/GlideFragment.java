@@ -2,15 +2,12 @@ package interview.heruijun.com.androidinterview.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.heruijun.baselibrary.fragment.BaseFragment;
 
@@ -33,11 +30,16 @@ public class GlideFragment extends BaseFragment implements View.OnClickListener 
         return glideFragment;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_glide, container, false);
-        mImageViewPager = view.findViewById(R.id.imageViewPager);
+    protected int getContentLayoutId() {
+        return R.layout.fragment_glide;
+    }
+
+    @Override
+    protected void initWidget(View root) {
+        super.initWidget(root);
+
+        mImageViewPager = root.findViewById(R.id.imageViewPager);
 
         myAdapter = new MyAdapter(getFragmentManager());
         mImageViewPager.setAdapter(myAdapter);
@@ -58,10 +60,8 @@ public class GlideFragment extends BaseFragment implements View.OnClickListener 
 
             }
         });
-
-        return view;
     }
-
+    
     @Override
     public void onClick(View view) {
         switch (view.getId()) {

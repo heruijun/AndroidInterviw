@@ -1,8 +1,6 @@
 package interview.heruijun.com.androidinterview.activity;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,11 +30,14 @@ public class DispatcherExampleActivity extends BaseActivity {
     private List<Item> mList = new ArrayList<>();
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dispatcher_example);
+    protected int getContentLayoutId() {
+        return R.layout.activity_dispatcher_example;
+    }
 
-        initData();
+    @Override
+    protected void initWidget() {
+        super.initWidget();
+
         mListView = findViewById(R.id.dispatcher_list);
         mAdapter = new DispatcherAdapter(DispatcherExampleActivity.this, mList);
         mListView.setAdapter(mAdapter);
@@ -49,7 +50,8 @@ public class DispatcherExampleActivity extends BaseActivity {
         });
     }
 
-    private void initData() {
+    @Override
+    protected void initData() {
         Item i1 = new Item();
         i1.title = "你好";
         i1.subTitle = "你好啊";

@@ -52,14 +52,13 @@ public class ImageViewFragment extends LazyFragment {
         return imageViewFragment;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_imageview, container, false);
+    protected void initWidget(View root) {
+        super.initWidget(root);
 
         interviewActivity = (InterviewActivity) getActivity();
-        mProgessBar = view.findViewById(R.id.progressBar);
-        mImage = view.findViewById(R.id.image);
+        mProgessBar = root.findViewById(R.id.progressBar);
+        mImage = root.findViewById(R.id.image);
         currentImg = getArguments().getString("imgUrl");
 
         isPrepared = true;
@@ -80,8 +79,11 @@ public class ImageViewFragment extends LazyFragment {
                 }
             }
         }
+    }
 
-        return view;
+    @Override
+    protected int getContentLayoutId() {
+        return R.layout.fragment_imageview;
     }
 
     @Override
@@ -123,12 +125,7 @@ public class ImageViewFragment extends LazyFragment {
                 if (bytesRead == contentLength) {
                     Log.e("文件长度", "加载完成");
                     ((InterviewActivity) getActivity()).cacheImg(currentImg);
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mProgessBar.setVisibility(View.GONE);
-                        }
-                    });
+                    mProgessBar.setVisibility(View.GONE);
                 }
             }
         };
