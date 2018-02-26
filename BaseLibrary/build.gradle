@@ -72,6 +72,8 @@ dependencies {
         transitive = false
     }
 
+    compile "com.jakewharton:butterknife:$butterknifeVersion"
+
     // compile 'it.sephiroth.android.library.bottomnavigation:bottom-navigation:2.0.1-rc1'
     compile 'com.github.heruijun:BottomNav:1.0-SNAPSHOT'
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
@@ -82,6 +84,7 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:2.1.3'
 
 
+    // -------qiujuer的ui库start
     // ui module
     compile 'net.qiujuer.genius:ui:2.0.0'
     compile 'net.qiujuer.genius:res:2.0.0'
@@ -95,5 +98,6 @@ dependencies {
     compile 'net.qiujuer.genius:kit-handler:2.0.0'
     // calss reflect
     compile 'net.qiujuer.genius:kit-reflect:2.0.0'
+    // -------qiujuer的ui库end
 
 }

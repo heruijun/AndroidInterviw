@@ -3,4 +3,7 @@
     <item name="BottomNavigation" type="id" />
     <item name="CoordinatorLayout01" type="id" />
     <item name="toolbar" type="id" />
+    <item name="edit" type="id" />
+    <item name="tag_recycler_holder" type="id" />
+    <item name="default_portrait" type="drawable" />
 </resources>
