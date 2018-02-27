@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/DesignPatterns/DesignPatterns.iml" filepath="$PROJECT_DIR$/DesignPatterns/DesignPatterns.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaTest/JavaTest.iml" filepath="$PROJECT_DIR$/JavaTest/JavaTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/JsBridge/JsBridge.iml" filepath="$PROJECT_DIR$/JsBridge/JsBridge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lang/Lang.iml" filepath="$PROJECT_DIR$/Lang/Lang.iml" />
     </modules>
   </component>
 </project>

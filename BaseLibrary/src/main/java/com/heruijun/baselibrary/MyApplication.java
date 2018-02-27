@@ -10,7 +10,10 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.github.moduth.blockcanary.BlockCanary;
+import com.heruijun.baselibrary.util.AppCache;
 import com.heruijun.baselibrary.util.Utils;
+import com.heruijun.baselibrary.util.crash.AppCrashHandler;
+import com.heruijun.baselibrary.util.storage.StorageUtil;
 import com.squareup.leakcanary.LeakCanary;
 
 import net.qiujuer.genius.kit.handler.Run;
@@ -34,6 +37,10 @@ public class MyApplication extends MultiDexApplication {
             return;
         }
         instance = this;
+
+        AppCrashHandler.getInstance(instance);
+        AppCache.setContext(instance);
+        StorageUtil.init(this, null);
 
         // 替换漂亮的字体
         Utils.FontsOverride.replace(this, "FZLanTingHeiS-L-GB-Regular.TTF",

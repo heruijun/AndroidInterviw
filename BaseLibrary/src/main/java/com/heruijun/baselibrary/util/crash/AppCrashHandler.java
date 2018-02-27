@@ -1,0 +1,51 @@
+package com.heruijun.baselibrary.util.crash;
+
+import android.content.Context;
+
+/**
+ * Created by heruijun on 2018/2/27.
+ */
+
+public class AppCrashHandler {
+
+    private Context context;
+    private Thread.UncaughtExceptionHandler uncaughtExceptionHandler;
+    private static AppCrashHandler instance;
+
+    public AppCrashHandler(Context context) {
+        this.context = context;
+
+        // get default
+        uncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
+
+        // install
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread thread, Throwable ex) {
+                // save log
+                saveException(ex, true);
+
+                // uncaught
+                uncaughtExceptionHandler.uncaughtException(thread, ex);
+            }
+        });
+    }
+
+    public static AppCrashHandler getInstance(Context context) {
+        if (instance == null) {
+            instance = new AppCrashHandler(context);
+        }
+
+        return instance;
+    }
+
+    public final void saveException(Throwable ex, boolean uncaught) {
+        CrashServer.save(context, ex, uncaught);
+    }
+
+    public void setUncaughtExceptionHandler(Thread.UncaughtExceptionHandler handler) {
+        if (handler != null) {
+            this.uncaughtExceptionHandler = handler;
+        }
+    }
+}
