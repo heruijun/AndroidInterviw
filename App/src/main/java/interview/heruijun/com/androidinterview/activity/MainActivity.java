@@ -15,21 +15,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.heruijun.baselibrary.config.RouterPath;
+import com.heruijun.baselibrary.util.Utils;
+
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.List;
 
 import interview.heruijun.com.androidinterview.R;
 import interview.heruijun.com.androidinterview.classloader.ClassloaderActivity;
-
-import com.heruijun.baselibrary.config.RouterPath;
-
 import interview.heruijun.com.androidinterview.normalwebview.NormalwebviewActivity;
 import interview.heruijun.com.androidinterview.service.ServiceActivity;
-
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.heruijun.baselibrary.util.Utils;
-
 import interview.heruijun.com.androidinterview.webview.WebviewActivity;
 
 /**
@@ -41,7 +38,7 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
     private static final String TAG = "MainActivity";
     private static final String LINE_0 = "Activity相关";
     private static final String LINE_1 = "普通webview";
-    private static final String LINE_2 = "自定义控件";
+    private static final String LINE_2 = "登陆注册";
     private static final String LINE_3 = "获取当前进程";
     private static final String LINE_4 = "Android动画";
     private static final String LINE_5 = "Handler正常用法";
@@ -123,7 +120,7 @@ public class MainActivity extends ListActivity implements AdapterView.OnItemClic
                 break;
             case LINE_2:
                 // Toast.makeText(MainActivity.this, Utils.createUUID(), Toast.LENGTH_SHORT).show();    // UUID生成
-                startActivity(new Intent(MainActivity.this, WidgetActivity.class));
+                startActivity(new Intent(MainActivity.this, AccountActivity.class));
                 break;
             case LINE_3:
                 Toast.makeText(MainActivity.this,

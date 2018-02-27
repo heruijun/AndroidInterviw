@@ -79,7 +79,7 @@
             android:label="@string/title_activity_animation"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.WidgetActivity"
+            android:name=".activity.AccountActivity"
             android:label="@string/title_activity_widget"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

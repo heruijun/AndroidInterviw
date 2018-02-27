@@ -16,7 +16,7 @@ import interview.heruijun.com.androidinterview.R;
 public class DispatcherViewActivity extends BaseActivity {
 
     @BindView(R.id.myTextView)
-    private AppCompatTextView mTextView;
+    AppCompatTextView mTextView;
 
     @Override
     protected int getContentLayoutId() {
