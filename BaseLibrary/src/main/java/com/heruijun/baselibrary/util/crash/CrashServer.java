@@ -25,7 +25,7 @@ import java.util.Date;
 
 public class CrashServer {
 
-    public static void save(Context context, Throwable ex, boolean uncaught) {
+    public static void save(Context context, Throwable ex,  String logFileSuffix, boolean uncaught) {
         if (!StorageUtil.isExternalStorageExist()) {// 如果没有sdcard，则不存储
             return;
         }
@@ -67,7 +67,7 @@ public class CrashServer {
         BufferedWriter mBufferedWriter = null;
         try {
             File mFile = new File(StorageUtil.getWritePath(
-                    filename + ".appcrashlog", StorageType.TYPE_LOG));
+                    filename + logFileSuffix, StorageType.TYPE_LOG));
             File pFile = mFile.getParentFile();
             if (!pFile.exists()) {// 如果文件夹不存在，则先创建文件夹
                 pFile.mkdirs();

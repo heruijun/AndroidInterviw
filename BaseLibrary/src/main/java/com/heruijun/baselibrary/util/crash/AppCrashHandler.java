@@ -8,6 +8,7 @@ import android.content.Context;
 
 public class AppCrashHandler {
 
+    private String logFileSuffix = ".appcrashlog";
     private Context context;
     private Thread.UncaughtExceptionHandler uncaughtExceptionHandler;
     private static AppCrashHandler instance;
@@ -23,12 +24,21 @@ public class AppCrashHandler {
             @Override
             public void uncaughtException(Thread thread, Throwable ex) {
                 // save log
-                saveException(ex, true);
+                saveException(ex, logFileSuffix, true);
 
                 // uncaught
                 uncaughtExceptionHandler.uncaughtException(thread, ex);
             }
         });
+    }
+
+    /**
+     * 设置文件后缀
+     *
+     * @param logFileSuffix
+     */
+    public void setLogFileSuffix(String logFileSuffix) {
+        this.logFileSuffix = logFileSuffix;
     }
 
     public static AppCrashHandler getInstance(Context context) {
@@ -39,8 +49,8 @@ public class AppCrashHandler {
         return instance;
     }
 
-    public final void saveException(Throwable ex, boolean uncaught) {
-        CrashServer.save(context, ex, uncaught);
+    public final void saveException(Throwable ex, String logFileSuffix, boolean uncaught) {
+        CrashServer.save(context, ex, logFileSuffix, uncaught);
     }
 
     public void setUncaughtExceptionHandler(Thread.UncaughtExceptionHandler handler) {

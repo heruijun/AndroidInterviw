@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 /**
  * Created by heruijun on 2018/1/13.
@@ -29,7 +28,7 @@ public class CustomLinearLayoutB extends LinearLayout {
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         // return super.onInterceptTouchEvent(ev);
         // return true;
-        return true;
+        return false;
     }
 
     @Override
@@ -40,6 +39,6 @@ public class CustomLinearLayoutB extends LinearLayout {
         }
         // return super.onTouchEvent(event);
         // return false;
-        return true;
+        return false;
     }
 }

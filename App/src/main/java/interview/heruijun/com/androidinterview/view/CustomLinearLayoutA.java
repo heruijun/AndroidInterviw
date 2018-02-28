@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 /**
  * Created by heruijun on 2018/1/13.
@@ -38,6 +37,7 @@ public class CustomLinearLayoutA extends LinearLayout {
             Log.w("view分发机制", "custom view a");
         }
         // return super.onTouchEvent(event);
+        // return false;
         return false;
     }
 }
