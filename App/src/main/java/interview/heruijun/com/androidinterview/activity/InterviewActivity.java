@@ -1,18 +1,16 @@
 package interview.heruijun.com.androidinterview.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.heruijun.baselibrary.activity.ToolbarActivity;
 import com.heruijun.baselibrary.config.RouterPath;
 
 import java.util.HashSet;
@@ -26,7 +24,8 @@ import interview.heruijun.com.androidinterview.util.AppPersistenceAPI;
 import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
 
 @Route(path = RouterPath.PATH_ACTIVITY)
-public class InterviewActivity extends AppCompatActivity implements BottomNavigation.OnMenuItemSelectionListener {
+public class InterviewActivity extends ToolbarActivity
+        implements BottomNavigation.OnMenuItemSelectionListener {
 
     private BottomNavigation mBottomNavigation;
     private FragmentManager fm;
@@ -37,17 +36,19 @@ public class InterviewActivity extends AppCompatActivity implements BottomNaviga
     private AppPersistenceAPI appPersistenceAPI;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_interview);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+    protected int getContentLayoutId() {
+        return R.layout.activity_interview;
+    }
+
+    @Override
+    protected void initWidget() {
+        super.initWidget();
 
         appPersistenceAPI = new AppPersistenceAPI(this);
         imgSet = getCachedImg();
         fm = getSupportFragmentManager();
 
-        initializeBottomNavigation(savedInstanceState);
+        initializeBottomNavigation();
     }
 
     @Override
@@ -56,7 +57,7 @@ public class InterviewActivity extends AppCompatActivity implements BottomNaviga
         Log.e("activity status: ", "on new intent");
     }
 
-    protected void initializeBottomNavigation(final Bundle savedInstanceState) {
+    protected void initializeBottomNavigation() {
         mBottomNavigation = findViewById(R.id.BottomNavigation);
         mBottomNavigation.setOnMenuItemClickListener(this);
         mBottomNavigation.setDefaultSelectedIndex(0);
