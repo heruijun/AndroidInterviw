@@ -23,7 +23,7 @@ import net.qiujuer.genius.kit.handler.runable.Action;
  * Created by heruijun on 2018/1/6.
  */
 
-public class MyApplication extends MultiDexApplication {
+public class BaseApplication extends MultiDexApplication {
 
     protected static Application instance;
     private static Handler sHandler;

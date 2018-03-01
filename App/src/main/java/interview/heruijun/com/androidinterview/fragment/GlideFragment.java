@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.heruijun.baselibrary.fragment.BaseFragment;
 
+import butterknife.BindView;
 import interview.heruijun.com.androidinterview.R;
 
 /**
@@ -20,7 +21,9 @@ import interview.heruijun.com.androidinterview.R;
 public class GlideFragment extends BaseFragment implements View.OnClickListener {
 
     private MyAdapter myAdapter;
-    private ViewPager mImageViewPager;
+
+    @BindView(R.id.imageViewPager)
+    ViewPager mImageViewPager;
 
     public static GlideFragment newInstance(String text) {
         GlideFragment glideFragment = new GlideFragment();
@@ -38,8 +41,6 @@ public class GlideFragment extends BaseFragment implements View.OnClickListener 
     @Override
     protected void initWidget(View root) {
         super.initWidget(root);
-
-        mImageViewPager = root.findViewById(R.id.imageViewPager);
 
         myAdapter = new MyAdapter(getFragmentManager());
         mImageViewPager.setAdapter(myAdapter);
