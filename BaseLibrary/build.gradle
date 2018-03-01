@@ -76,6 +76,8 @@ dependencies {
 
     // compile 'it.sephiroth.android.library.bottomnavigation:bottom-navigation:2.0.1-rc1'
     compile 'com.github.heruijun:BottomNav:1.0-SNAPSHOT'
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
 
     // 弹框封装

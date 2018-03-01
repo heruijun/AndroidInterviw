@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/JavaTest" />
             <option value="$PROJECT_DIR$/JsBridge" />
             <option value="$PROJECT_DIR$/Lang" />
+            <option value="$PROJECT_DIR$/Provider" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

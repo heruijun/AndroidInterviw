@@ -4,6 +4,8 @@ buildscript {
     ext.kotlin_version = '1.2.10'
     ext.anko_version='0.10.3'
     ext.butterknifeVersion = '8.8.1'
+    ext.retrofitVersion = '2.1.0'
+
     // ext.android_support_version='27.0.2'
     repositories {
         mavenCentral()
