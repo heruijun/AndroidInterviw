@@ -10,10 +10,10 @@ import interview.heruijun.com.androidinterview.R;
  * Created by heruijun on 2018/2/18.
  */
 
-public class FileManagerFragment extends BaseFragment {
+public class DataListExampleFragment extends BaseFragment {
 
-    public static FileManagerFragment newInstance(String text) {
-        FileManagerFragment fileManagerFragment = new FileManagerFragment();
+    public static DataListExampleFragment newInstance(String text) {
+        DataListExampleFragment fileManagerFragment = new DataListExampleFragment();
         Bundle bundle = new Bundle();
         bundle.putString("text", text);
         fileManagerFragment.setArguments(bundle);

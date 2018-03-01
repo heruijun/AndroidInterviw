@@ -9,17 +9,14 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.heruijun.baselibrary.activity.BaseActivity;
 import com.heruijun.baselibrary.config.RouterPath;
 import com.heruijun.baselibrary.recycler.DividerItemDecoration;
-import com.heruijun.baselibrary.recycler.OnBottomReachedListener;
-import com.heruijun.baselibrary.recycler.OnRecylerItemClick;
+import com.heruijun.baselibrary.recycler.RecyclerAdapter;
 import com.heruijun.baselibrary.util.Utils;
 
 import java.lang.ref.WeakReference;
@@ -61,7 +58,8 @@ public class MainActivity extends BaseActivity {
 
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
-    MyRecyclerAdapter adapter;
+
+    RecyclerAdapter<String> adapter;
 
     private MyHandler myHandler = new MyHandler(this);
 
@@ -119,74 +117,76 @@ public class MainActivity extends BaseActivity {
         }
         // ARouter.getInstance().build(uri).navigation();
 
-        adapter = new MyRecyclerAdapter(lines);
+        adapter = new RecyclerAdapter<String>(lines, new RecyclerAdapter.AdapterListenerImpl<String>() {
+            @Override
+            public void onItemClick(RecyclerAdapter.ViewHolder holder, String line) {
+                bindLine(line);
+            }
+        }) {
+            @Override
+            protected ViewHolder<String> onCreateViewHolder(View root, int viewType) {
+                return new MainActivity.ViewHolder(root);
+            }
+
+            @Override
+            protected int getItemViewType(int position, String s) {
+                return R.layout.list_item;
+            }
+        };
         recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
-
-        adapter.setOnRecylerItemClick(new OnItemClick());
-
-        adapter.setOnBottomReachedListener(new OnBottomReachedListener() {
-            @Override
-            public void onBottomReached(int position) {
-                Toast.makeText(MainActivity.this, "滚动到底部", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
-    private class OnItemClick implements OnRecylerItemClick {
-
-        @Override
-        public void onItemClick(int position) {
-            String line = lines.get(position);
-            switch (line) {
-                case LINE_0:
-                    // startActivity(new Intent(MainActivity.this, InterviewActivity.class));
-                    ARouter.getInstance().build(RouterPath.PATH_ACTIVITY).navigation();
-                    break;
-                case LINE_1:
-                    startActivity(new Intent(MainActivity.this, NormalwebviewActivity.class));
-                    break;
-                case LINE_2:
-                    // Toast.makeText(MainActivity.this, Utils.createUUID(), Toast.LENGTH_SHORT).show();    // UUID生成
-                    startActivity(new Intent(MainActivity.this, AccountActivity.class));
-                    break;
-                case LINE_3:
-                    Toast.makeText(MainActivity.this,
-                            Utils.getRunningProcess(MainActivity.this).processName, Toast.LENGTH_SHORT).show();
-                    break;
-                case LINE_4:
-                    startActivity(new Intent(MainActivity.this, AnimationActivity.class));
-                    break;
-                case LINE_5:
-                    // myHandler.sendEmptyMessage(0);
-                    startActivity(new Intent(MainActivity.this, HandlerExample.class));
-                    break;
-                case LINE_6:
-                    startActivity(new Intent(MainActivity.this, WebviewActivity.class));
-                    break;
-                case LINE_7:
-                    for (int i = 0; i < 10000; i++) {
-                        A a = new A();
-                        a.say();
-                    }
-                    break;
-                case LINE_8:
-                    startActivity(new Intent(MainActivity.this, DispatcherExampleActivity.class));
-                    break;
-                case LINE_9:
-                    startActivity(new Intent(MainActivity.this, DispatcherViewActivity.class));
-                    break;
-                case LINE_10:
-                    startActivity(new Intent(MainActivity.this, ServiceActivity.class));
-                    break;
-                case LINE_11:
-                    startActivity(new Intent(MainActivity.this, ClassloaderActivity.class));
-                    break;
-            }
+    private void bindLine(String line) {
+        switch (line) {
+            case LINE_0:
+                // startActivity(new Intent(MainActivity.this, InterviewActivity.class));
+                ARouter.getInstance().build(RouterPath.PATH_ACTIVITY).navigation();
+                break;
+            case LINE_1:
+                startActivity(new Intent(MainActivity.this, NormalwebviewActivity.class));
+                break;
+            case LINE_2:
+                // Toast.makeText(MainActivity.this, Utils.createUUID(), Toast.LENGTH_SHORT).show();    // UUID生成
+                startActivity(new Intent(MainActivity.this, AccountActivity.class));
+                break;
+            case LINE_3:
+                Toast.makeText(MainActivity.this,
+                        Utils.getRunningProcess(MainActivity.this).processName, Toast.LENGTH_SHORT).show();
+                break;
+            case LINE_4:
+                startActivity(new Intent(MainActivity.this, AnimationActivity.class));
+                break;
+            case LINE_5:
+                // myHandler.sendEmptyMessage(0);
+                startActivity(new Intent(MainActivity.this, HandlerExample.class));
+                break;
+            case LINE_6:
+                startActivity(new Intent(MainActivity.this, WebviewActivity.class));
+                break;
+            case LINE_7:
+                for (int i = 0; i < 10000; i++) {
+                    A a = new A();
+                    a.say();
+                }
+                break;
+            case LINE_8:
+                startActivity(new Intent(MainActivity.this, DispatcherExampleActivity.class));
+                break;
+            case LINE_9:
+                startActivity(new Intent(MainActivity.this, DispatcherViewActivity.class));
+                break;
+            case LINE_10:
+                startActivity(new Intent(MainActivity.this, ServiceActivity.class));
+                break;
+            case LINE_11:
+                startActivity(new Intent(MainActivity.this, ClassloaderActivity.class));
+                break;
         }
     }
+
 
     private static final class MyHandler extends Handler {
         private final WeakReference<MainActivity> mWeakReference;
@@ -222,59 +222,18 @@ public class MainActivity extends BaseActivity {
 //        GodEye.instance().uninstallAll();
     }
 
-    private static class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.ViewHolder> {
+    class ViewHolder extends RecyclerAdapter.ViewHolder<String> {
 
-        List<String> lines;
-        OnBottomReachedListener onBottomReachedListener;
-        OnRecylerItemClick onRecylerItemClick;
+        @BindView(R.id.text_title)
+        AppCompatTextView textView;
 
-        public MyRecyclerAdapter(List<String> lines) {
-            this.lines = lines;
-        }
-
-        public void setOnBottomReachedListener(OnBottomReachedListener onBottomReachedListener) {
-            this.onBottomReachedListener = onBottomReachedListener;
-        }
-
-        public void setOnRecylerItemClick(OnRecylerItemClick onRecylerItemClick) {
-            this.onRecylerItemClick = onRecylerItemClick;
+        public ViewHolder(View itemView) {
+            super(itemView);
         }
 
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup root, int viewType) {
-            View view = LayoutInflater.from(root.getContext()).inflate(R.layout.list_item, root, false);
-            return new ViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder holder, final int position) {
-            if (position == lines.size() - 1 && onBottomReachedListener != null) {
-                onBottomReachedListener.onBottomReached(position);
-            }
-            holder.textView.setText(lines.get(position));
-            if (onRecylerItemClick != null) {
-                holder.textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        onRecylerItemClick.onItemClick(position);
-                    }
-                });
-            }
-        }
-
-        @Override
-        public int getItemCount() {
-            return lines.size();
-        }
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-            public AppCompatTextView textView;
-
-            public ViewHolder(View itemView) {
-                super(itemView);
-                textView = itemView.findViewById(R.id.text_title);
-            }
+        protected void onBind(String s) {
+            textView.setText(s);
         }
     }
-
 }

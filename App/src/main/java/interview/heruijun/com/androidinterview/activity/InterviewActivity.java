@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import interview.heruijun.com.androidinterview.R;
-import interview.heruijun.com.androidinterview.fragment.FileManagerFragment;
+import interview.heruijun.com.androidinterview.fragment.DataListExampleFragment;
 import interview.heruijun.com.androidinterview.fragment.GlideFragment;
 import interview.heruijun.com.androidinterview.helper.CustomBadgeProvider;
 import interview.heruijun.com.androidinterview.util.AppPersistenceAPI;
@@ -31,7 +31,7 @@ public class InterviewActivity extends ToolbarActivity
     private FragmentManager fm;
     private Fragment mCurrent;
     private GlideFragment glideFragment;
-    private FileManagerFragment managerFragment;
+    private DataListExampleFragment dataListFragment;
     private Set<String> imgSet = new HashSet<>();
     private AppPersistenceAPI appPersistenceAPI;
 
@@ -124,7 +124,7 @@ public class InterviewActivity extends ToolbarActivity
 
         switch (itemId) {
             case R.id.bbn_item1:
-                hideFragment(managerFragment, fragmentTransaction);
+                hideFragment(dataListFragment, fragmentTransaction);
                 if (glideFragment == null) {
                     glideFragment = GlideFragment.newInstance("测试");
                     fragmentTransaction.add(R.id.content, glideFragment);
@@ -136,12 +136,12 @@ public class InterviewActivity extends ToolbarActivity
                 break;
             case R.id.bbn_item2:
                 hideFragment(glideFragment, fragmentTransaction);
-                if (managerFragment == null) {
-                    managerFragment = FileManagerFragment.newInstance("测试");
-                    fragmentTransaction.add(R.id.content, managerFragment);
+                if (dataListFragment == null) {
+                    dataListFragment = DataListExampleFragment.newInstance("测试");
+                    fragmentTransaction.add(R.id.content, dataListFragment);
                 } else {
-                    mCurrent = managerFragment;
-                    fragmentTransaction.show(managerFragment);
+                    mCurrent = dataListFragment;
+                    fragmentTransaction.show(dataListFragment);
                 }
                 fragmentTransaction.commitAllowingStateLoss();
                 break;
