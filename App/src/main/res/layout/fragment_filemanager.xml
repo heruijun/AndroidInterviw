@@ -9,11 +9,25 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="干活集中营" />
+        android:padding="10dp"
+        android:text="干活集中营"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.heruijun.baselibrary.widget.EmptyView
+            android:id="@+id/empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
 
 </LinearLayout>
