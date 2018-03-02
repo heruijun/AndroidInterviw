@@ -16,6 +16,7 @@ import com.heruijun.baselibrary.config.RouterPath;
 import java.util.HashSet;
 import java.util.Set;
 
+import butterknife.BindView;
 import interview.heruijun.com.androidinterview.R;
 import interview.heruijun.com.androidinterview.fragment.DataListExampleFragment;
 import interview.heruijun.com.androidinterview.fragment.GlideFragment;
@@ -27,7 +28,12 @@ import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
 public class InterviewActivity extends ToolbarActivity
         implements BottomNavigation.OnMenuItemSelectionListener {
 
-    private BottomNavigation mBottomNavigation;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
+
+    @BindView(R.id.BottomNavigation)
+    BottomNavigation mBottomNavigation;
+
     private FragmentManager fm;
     private Fragment mCurrent;
     private GlideFragment glideFragment;
@@ -48,17 +54,6 @@ public class InterviewActivity extends ToolbarActivity
         imgSet = getCachedImg();
         fm = getSupportFragmentManager();
 
-        initializeBottomNavigation();
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        Log.e("activity status: ", "on new intent");
-    }
-
-    protected void initializeBottomNavigation() {
-        mBottomNavigation = findViewById(R.id.BottomNavigation);
         mBottomNavigation.setOnMenuItemClickListener(this);
         mBottomNavigation.setDefaultSelectedIndex(0);
         swtchFragmentOnMenuSelect(R.id.bbn_item1);
@@ -66,7 +61,6 @@ public class InterviewActivity extends ToolbarActivity
         CustomBadgeProvider provider = (CustomBadgeProvider) mBottomNavigation.getBadgeProvider();
         provider.show(R.id.bbn_item3, 1);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +87,16 @@ public class InterviewActivity extends ToolbarActivity
                 }
             }
         });
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.e("activity status: ", "on new intent");
+    }
+
+    protected void initializeBottomNavigation() {
+
     }
 
     @Override

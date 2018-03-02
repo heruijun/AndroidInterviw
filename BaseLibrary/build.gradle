@@ -102,4 +102,6 @@ dependencies {
     compile 'net.qiujuer.genius:kit-reflect:2.0.0'
     // -------qiujuer的ui库end
 
+    compile 'com.github.florent37:mylittlecanvas:1.0.1'
+
 }

@@ -186,8 +186,7 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
-
-
+    
     private static final class MyHandler extends Handler {
         private final WeakReference<MainActivity> mWeakReference;
 
