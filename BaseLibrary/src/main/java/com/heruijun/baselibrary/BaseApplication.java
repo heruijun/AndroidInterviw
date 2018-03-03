@@ -14,7 +14,6 @@ import com.heruijun.baselibrary.util.AppCache;
 import com.heruijun.baselibrary.util.Utils;
 import com.heruijun.baselibrary.util.crash.AppCrashHandler;
 import com.heruijun.baselibrary.util.storage.StorageUtil;
-import com.squareup.leakcanary.LeakCanary;
 
 import net.qiujuer.genius.kit.handler.Run;
 import net.qiujuer.genius.kit.handler.runable.Action;
@@ -31,11 +30,7 @@ public class BaseApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-            return;
-        }
+
         instance = this;
 
         AppCrashHandler.getInstance(instance);
@@ -46,7 +41,6 @@ public class BaseApplication extends MultiDexApplication {
         Utils.FontsOverride.replace(this, "FZLanTingHeiS-L-GB-Regular.TTF",
                 "FZLanTingHeiS-DB1-GB-Regular.TTF");
 
-        LeakCanary.install(this);
         BlockCanary.install(this, new AppBlockCanaryContext()).start();
 
         ARouter.openLog();     // 打印日志
