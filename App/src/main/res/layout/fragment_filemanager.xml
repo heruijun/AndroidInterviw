@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.heruijun.baselibrary.widget.UnderlinedTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:text="干活集中营"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+    <!--<com.heruijun.baselibrary.widget.UnderlinedTextView-->
+        <!--android:id="@+id/underlinedText"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="20dp"-->
+        <!--android:text="干活集中营"-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textSize="20sp" />-->
 
     <FrameLayout
         android:layout_width="match_parent"

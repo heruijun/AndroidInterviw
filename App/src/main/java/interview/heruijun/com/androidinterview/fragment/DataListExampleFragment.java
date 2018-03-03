@@ -121,6 +121,5 @@ public class DataListExampleFragment extends PresenterFragment<SearchContract.Pr
             }
             mAuthor.setText(gank.getWho());
         }
-
     }
 }

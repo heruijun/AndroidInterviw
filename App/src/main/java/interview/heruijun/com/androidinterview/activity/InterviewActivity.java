@@ -20,6 +20,7 @@ import butterknife.BindView;
 import interview.heruijun.com.androidinterview.R;
 import interview.heruijun.com.androidinterview.fragment.DataListExampleFragment;
 import interview.heruijun.com.androidinterview.fragment.GlideFragment;
+import interview.heruijun.com.androidinterview.fragment.WebViewExampleFragment;
 import interview.heruijun.com.androidinterview.helper.CustomBadgeProvider;
 import interview.heruijun.com.androidinterview.util.AppPersistenceAPI;
 import it.sephiroth.android.library.bottomnavigation.BottomNavigation;
@@ -38,6 +39,7 @@ public class InterviewActivity extends ToolbarActivity
     private Fragment mCurrent;
     private GlideFragment glideFragment;
     private DataListExampleFragment dataListFragment;
+    private WebViewExampleFragment webViewExampleFragment;
     private Set<String> imgSet = new HashSet<>();
     private AppPersistenceAPI appPersistenceAPI;
 
@@ -125,6 +127,7 @@ public class InterviewActivity extends ToolbarActivity
         switch (itemId) {
             case R.id.bbn_item1:
                 hideFragment(dataListFragment, fragmentTransaction);
+                hideFragment(webViewExampleFragment, fragmentTransaction);
                 if (glideFragment == null) {
                     glideFragment = GlideFragment.newInstance("测试");
                     fragmentTransaction.add(R.id.content, glideFragment);
@@ -136,12 +139,25 @@ public class InterviewActivity extends ToolbarActivity
                 break;
             case R.id.bbn_item2:
                 hideFragment(glideFragment, fragmentTransaction);
+                hideFragment(webViewExampleFragment, fragmentTransaction);
                 if (dataListFragment == null) {
                     dataListFragment = DataListExampleFragment.newInstance("测试");
                     fragmentTransaction.add(R.id.content, dataListFragment);
                 } else {
                     mCurrent = dataListFragment;
                     fragmentTransaction.show(dataListFragment);
+                }
+                fragmentTransaction.commitAllowingStateLoss();
+                break;
+            case R.id.bbn_item3:
+                hideFragment(dataListFragment, fragmentTransaction);
+                hideFragment(glideFragment, fragmentTransaction);
+                if (webViewExampleFragment == null) {
+                    webViewExampleFragment = WebViewExampleFragment.newInstance();
+                    fragmentTransaction.add(R.id.content, webViewExampleFragment);
+                } else {
+                    mCurrent = webViewExampleFragment;
+                    fragmentTransaction.show(webViewExampleFragment);
                 }
                 fragmentTransaction.commitAllowingStateLoss();
                 break;
