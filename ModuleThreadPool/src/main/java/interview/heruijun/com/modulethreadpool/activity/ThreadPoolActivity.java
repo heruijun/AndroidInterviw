@@ -73,10 +73,16 @@ public class ThreadPoolActivity extends BaseActivity {
     RecyclerAdapter<String> adapter;
 
 
-    private static final String LINE_0 = "线程池";
+    private static final String LINE_0 = "定长线程池（FixedThreadPool）";
+    private static final String LINE_1 = "定时线程池（ScheduledThreadPool）";
+    private static final String LINE_2 = "可缓存线程池（CachedThreadPool）";
+    private static final String LINE_3 = "单线程化线程池（SingleThreadExecutor）";
 
     private List<String> lines = Arrays.asList(
-            LINE_0
+            LINE_0,
+            LINE_1,
+            LINE_2,
+            LINE_3
     );
 
     @Override
@@ -114,6 +120,15 @@ public class ThreadPoolActivity extends BaseActivity {
         switch (line) {
             case LINE_0:
                 startActivity(new Intent(ThreadPoolActivity.this, FixedThreadPoolActivity.class));
+                break;
+            case LINE_1:
+                startActivity(new Intent(ThreadPoolActivity.this, ScheduledThreadPoolActivity.class));
+                break;
+            case LINE_2:
+                startActivity(new Intent(ThreadPoolActivity.this, CachedThreadPoolActivity.class));
+                break;
+            case LINE_3:
+                startActivity(new Intent(ThreadPoolActivity.this, SingleThreadExecutorActivity.class));
                 break;
         }
     }
