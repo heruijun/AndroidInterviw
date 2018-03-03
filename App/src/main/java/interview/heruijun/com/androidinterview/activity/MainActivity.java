@@ -28,7 +28,6 @@ import interview.heruijun.com.androidinterview.R;
 import interview.heruijun.com.androidinterview.classloader.ClassloaderActivity;
 import interview.heruijun.com.androidinterview.normalwebview.NormalwebviewActivity;
 import interview.heruijun.com.androidinterview.service.ServiceActivity;
-import interview.heruijun.com.androidinterview.webview.WebviewActivity;
 
 /**
  * Created by heruijun on 2018/1/5.
@@ -40,11 +39,11 @@ public class MainActivity extends BaseActivity {
 
     private static final String LINE_0 = "Activity相关";
     private static final String LINE_1 = "普通webview";
-    private static final String LINE_2 = "登陆注册";
+    private static final String LINE_2 = "一个小型完整的APP";
     private static final String LINE_3 = "获取当前进程";
     private static final String LINE_4 = "Android动画";
     private static final String LINE_5 = "Handler正常用法";
-    private static final String LINE_6 = "腾讯webview";
+    private static final String LINE_6 = "线程池用法";
     private static final String LINE_7 = "内存泄漏研究";
     private static final String LINE_8 = "列表的事件分发";
     private static final String LINE_9 = "事件分发机制";
@@ -163,7 +162,8 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this, HandlerExample.class));
                 break;
             case LINE_6:
-                startActivity(new Intent(MainActivity.this, WebviewActivity.class));
+                // startActivity(new Intent(MainActivity.this, WebviewActivity.class));
+                ARouter.getInstance().build(RouterPath.PATH_THREADPOOL).navigation();
                 break;
             case LINE_7:
                 ARouter.getInstance().build(RouterPath.PATH_MEMORY).navigation();

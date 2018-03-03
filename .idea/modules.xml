@@ -11,7 +11,8 @@
       <module fileurl="file://$PROJECT_DIR$/ModuleDesignPatterns/DesignPatterns.iml" filepath="$PROJECT_DIR$/ModuleDesignPatterns/DesignPatterns.iml" />
       <module fileurl="file://$PROJECT_DIR$/ModuleJavaTest/JavaTest.iml" filepath="$PROJECT_DIR$/ModuleJavaTest/JavaTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/ModuleMemory/ModuleMemory.iml" filepath="$PROJECT_DIR$/ModuleMemory/ModuleMemory.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ModuleUser/ModuleUser.iml" filepath="$PROJECT_DIR$/ModuleUser/ModuleUser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ModuleMyApp/ModuleUser.iml" filepath="$PROJECT_DIR$/ModuleMyApp/ModuleUser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ModuleThreadPool/ModuleThreadPool.iml" filepath="$PROJECT_DIR$/ModuleThreadPool/ModuleThreadPool.iml" />
       <module fileurl="file://$PROJECT_DIR$/Provider/Provider.iml" filepath="$PROJECT_DIR$/Provider/Provider.iml" />
     </modules>
   </component>

@@ -15,4 +15,7 @@ public class RouterPath {
     // 内存泄漏研究
     public static final String PATH_MEMORY = "/memory/analyze";
 
+
+    public static final String PATH_THREADPOOL = "/thread/pool";
+
 }

@@ -1,14 +1,11 @@
 /**
- * 内存泄露(Memory Leak)指一个无用对象持续占有内存或无用对象的内存得不到及时的释放，从而造成内存空间的浪费
- * 例如，当Activity的onDestroy()方法被调用以后，Activity 本身以及它涉及到的 View、Bitmap等都应该被回收。
- * 但是，如果有一个后台线程持有对这个Activity的引用，那么Activity占据的内存就不能被回收，严重时将导致OOM，最终Crash。
- * 内存溢出(Out Of Memory)指一个应用在申请内存时，没有足够的内存空间供其使用
- * <p>
- * 有时候我们需要把一些对象加入到集合容器（例如ArrayList）中，当不再需要当中某些对象时，如果不把该对象的引用从集
- * 合中清理掉，也会使得GC无法回收该对象。如果集合是static类型的话，那内存泄漏情况就会更为严重。
- * 因此，当不再需要某对象时，需要主动将之从集合中移除
+ * 常见的4种功能线程池
+ * 1.定长线程池
+ * 2.定时线程池
+ * 3.可缓存线程池
+ * 4.单线程化线程池
  */
-package interview.heruijun.com.modulememory.activity;
+package interview.heruijun.com.modulethreadpool.activity;
 
 import android.content.Intent;
 import android.support.v7.widget.AppCompatTextView;
@@ -27,14 +24,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
-import interview.heruijun.com.modulememory.R;
-import interview.heruijun.com.modulememory.R2;
+import interview.heruijun.com.modulethreadpool.R;
+import interview.heruijun.com.modulethreadpool.R2;
 
 /**
  * Created by heruijun on 2018/3/3.
  */
-@Route(path = RouterPath.PATH_MEMORY)
-public class MemoryActivity extends BaseActivity {
+@Route(path = RouterPath.PATH_THREADPOOL)
+public class ThreadPoolActivity extends BaseActivity {
 
     @BindView(R2.id.recyclerview)
     RecyclerView recyclerView;
@@ -42,19 +39,15 @@ public class MemoryActivity extends BaseActivity {
     RecyclerAdapter<String> adapter;
 
 
-    private static final String LINE_0 = "Handler引起内存泄漏并解决的案例";
-    private static final String LINE_1 = "Thread引起内存泄漏并解决的案例（开关控制方案）";
-    private static final String LINE_2 = "Thread引起内存泄漏并解决的案例（静态内部类和对Activity弱引用的方案）";
+    private static final String LINE_0 = "线程池";
 
     private List<String> lines = Arrays.asList(
-            LINE_0,
-            LINE_1,
-            LINE_2
+            LINE_0
     );
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.activity_memory;
+        return R.layout.activity_threadpool;
     }
 
     @Override
@@ -69,7 +62,7 @@ public class MemoryActivity extends BaseActivity {
         }) {
             @Override
             protected ViewHolder<String> onCreateViewHolder(View root, int viewType) {
-                return new MemoryActivity.ViewHolder(root);
+                return new ThreadPoolActivity.ViewHolder(root);
             }
 
             @Override
@@ -86,13 +79,7 @@ public class MemoryActivity extends BaseActivity {
     private void bindLine(String line) {
         switch (line) {
             case LINE_0:
-                startActivity(new Intent(MemoryActivity.this, HandlerActivity.class));
-                break;
-            case LINE_1:
-                startActivity(new Intent(MemoryActivity.this, ThreadActivity1.class));
-                break;
-            case LINE_2:
-                startActivity(new Intent(MemoryActivity.this, ThreadActivity2.class));
+                startActivity(new Intent(ThreadPoolActivity.this, MyFixedThreadPool.class));
                 break;
         }
     }

@@ -16,7 +16,8 @@
             <option value="$PROJECT_DIR$/ModuleDesignPatterns" />
             <option value="$PROJECT_DIR$/ModuleJavaTest" />
             <option value="$PROJECT_DIR$/ModuleMemory" />
-            <option value="$PROJECT_DIR$/ModuleUser" />
+            <option value="$PROJECT_DIR$/ModuleMyApp" />
+            <option value="$PROJECT_DIR$/ModuleThreadPool" />
             <option value="$PROJECT_DIR$/Provider" />
           </set>
         </option>
