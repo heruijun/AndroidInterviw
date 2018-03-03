@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion ANDROID_BUILD_SDK_VERSION as int
@@ -35,7 +36,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     compile project(path: ':Provider')
-
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
 
 }

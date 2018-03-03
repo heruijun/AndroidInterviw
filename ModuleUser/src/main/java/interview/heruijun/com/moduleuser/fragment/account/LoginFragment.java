@@ -5,7 +5,9 @@ import android.view.View;
 
 import com.heruijun.baselibrary.fragment.BaseFragment;
 
+import butterknife.OnClick;
 import interview.heruijun.com.moduleuser.R;
+import interview.heruijun.com.moduleuser.R2;
 
 /**
  * Created by heruijun on 2018/2/27.
@@ -33,9 +35,9 @@ public class LoginFragment extends BaseFragment {
         // mLink.setText("aaa");
     }
 
-//    @SuppressWarnings("unused")
-//    @OnClick(R2.id.to_reg)
-//    void toRegView() {
-//        accountListener.triggerView();
-//    }
+    @SuppressWarnings("unused")
+    @OnClick(R2.id.to_reg)
+    void toRegView() {
+        accountListener.triggerView();
+    }
 }
