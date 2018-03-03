@@ -89,5 +89,7 @@ dependencies {
 
     compile project(path: ':Provider')
     compile project(path: ':ModuleUser')
+    compile project(path: ':ModuleMemory')
+
 
 }

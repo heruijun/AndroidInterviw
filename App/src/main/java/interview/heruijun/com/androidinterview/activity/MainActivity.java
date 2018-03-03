@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity {
     private static final String LINE_4 = "Android动画";
     private static final String LINE_5 = "Handler正常用法";
     private static final String LINE_6 = "腾讯webview";
-    private static final String LINE_7 = "内存抖动";
+    private static final String LINE_7 = "内存泄漏研究";
     private static final String LINE_8 = "列表的事件分发";
     private static final String LINE_9 = "事件分发机制";
     private static final String LINE_10 = "service用法";
@@ -142,9 +142,6 @@ public class MainActivity extends BaseActivity {
     private void bindLine(String line) {
         switch (line) {
             case LINE_0:
-//                Intent intent = new Intent("com.interview.next");     // 隐士跳转
-//                startActivity(intent);
-//                 startActivity(new Intent(InterviewActivity.this, Main2Activity.class));
                 ARouter.getInstance().build(RouterPath.PATH_ACTIVITY).navigation();
                 break;
             case LINE_1:
@@ -169,10 +166,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this, WebviewActivity.class));
                 break;
             case LINE_7:
-                for (int i = 0; i < 10000; i++) {
-                    A a = new A();
-                    a.say();
-                }
+                ARouter.getInstance().build(RouterPath.PATH_MEMORY).navigation();
                 break;
             case LINE_8:
                 startActivity(new Intent(MainActivity.this, DispatcherExampleActivity.class));
@@ -207,12 +201,6 @@ public class MainActivity extends BaseActivity {
                         break;
                 }
             }
-        }
-    }
-
-    class A {
-        void say() {
-            Log.d("CPU 抖动测试", "测试内容");
         }
     }
 
