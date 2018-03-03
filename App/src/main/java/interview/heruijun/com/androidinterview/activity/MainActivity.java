@@ -142,7 +142,9 @@ public class MainActivity extends BaseActivity {
     private void bindLine(String line) {
         switch (line) {
             case LINE_0:
-                // startActivity(new Intent(MainActivity.this, InterviewActivity.class));
+//                Intent intent = new Intent("com.interview.next");     // 隐士跳转
+//                startActivity(intent);
+//                 startActivity(new Intent(InterviewActivity.this, Main2Activity.class));
                 ARouter.getInstance().build(RouterPath.PATH_ACTIVITY).navigation();
                 break;
             case LINE_1:
@@ -150,7 +152,7 @@ public class MainActivity extends BaseActivity {
                 break;
             case LINE_2:
                 // Toast.makeText(MainActivity.this, Utils.createUUID(), Toast.LENGTH_SHORT).show();    // UUID生成
-                startActivity(new Intent(MainActivity.this, AccountActivity.class));
+                ARouter.getInstance().build(RouterPath.PATH_USER).navigation();
                 break;
             case LINE_3:
                 Toast.makeText(MainActivity.this,

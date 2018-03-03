@@ -88,4 +88,6 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVersion"
 
     compile project(path: ':Provider')
+    compile project(path: ':ModuleUser')
+
 }

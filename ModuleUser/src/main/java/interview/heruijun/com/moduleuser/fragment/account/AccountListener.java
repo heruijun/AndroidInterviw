@@ -1,4 +1,4 @@
-package interview.heruijun.com.androidinterview.fragment.account;
+package interview.heruijun.com.moduleuser.fragment.account;
 
 /**
  * Created by heruijun on 2018/2/27.

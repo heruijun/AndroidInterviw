@@ -62,7 +62,11 @@ public class DataListExampleFragment extends PresenterFragment<SearchContract.Pr
 
             @Override
             protected int getItemViewType(int position, Gank gank) {
-                return R.layout.list_gank_item;
+                if(gank.getImages() == null) {
+                    return R.layout.list_gank_item;
+                } else {
+                    return R.layout.list_gank_item_images;
+                }
             }
         });
         mRecycler.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
@@ -82,7 +86,7 @@ public class DataListExampleFragment extends PresenterFragment<SearchContract.Pr
 
     @Override
     public void onSearchDone(List<Gank> ganks) {
-        mAdapter.replace(ganks);
+        mAdapter.add(ganks);
         mEmptyView.triggerOkOrEmpty(mAdapter.getItems().size() > 0);
     }
 

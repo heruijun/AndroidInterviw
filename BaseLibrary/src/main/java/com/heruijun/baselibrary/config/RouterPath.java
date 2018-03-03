@@ -9,4 +9,6 @@ public class RouterPath {
     // activity
     public static final String PATH_ACTIVITY = "/test/activity";
 
+    public static final String PATH_USER = "/user/login";
+
 }

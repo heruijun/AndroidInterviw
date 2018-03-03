@@ -3,9 +3,7 @@ package interview.heruijun.com.androidinterview.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.bumptech.glide.integration.okhttp3.OkHttpUrlLoader;
@@ -125,7 +123,12 @@ public class ImageViewFragment extends LazyFragment {
                 if (bytesRead == contentLength) {
                     Log.e("文件长度", "加载完成");
                     ((InterviewActivity) getActivity()).cacheImg(currentImg);
-                    mProgessBar.setVisibility(View.GONE);
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mProgessBar.setVisibility(View.GONE);
+                        }
+                    });
                 }
             }
         };

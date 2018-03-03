@@ -64,10 +64,6 @@ public class InterviewActivity extends ToolbarActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent("com.interview.next");     // 隐士跳转
-//                startActivity(intent);
-//                 startActivity(new Intent(InterviewActivity.this, Main2Activity.class));
-
                 int selectedIndex = mBottomNavigation.getSelectedIndex() + 1;
                 final int totalCount = mBottomNavigation.getMenuItemCount();
 

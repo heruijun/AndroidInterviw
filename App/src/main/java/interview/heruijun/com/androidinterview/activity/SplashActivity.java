@@ -48,7 +48,7 @@ public class SplashActivity extends Activity {
 
                     finish();
                 }
-            }, 2000);
+            }, 500);
         } else {
             Toast.makeText(this, "permission " + Manifest.permission.WRITE_EXTERNAL_STORAGE + " need!!!", Toast.LENGTH_SHORT).show();
             finish();

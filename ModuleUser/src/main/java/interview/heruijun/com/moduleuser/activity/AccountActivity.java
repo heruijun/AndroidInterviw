@@ -1,14 +1,17 @@
-package interview.heruijun.com.androidinterview.activity;
+package interview.heruijun.com.moduleuser.activity;
 
 import android.support.v4.app.Fragment;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.heruijun.baselibrary.activity.BaseActivity;
+import com.heruijun.baselibrary.config.RouterPath;
 
-import interview.heruijun.com.androidinterview.R;
-import interview.heruijun.com.androidinterview.fragment.account.AccountListener;
-import interview.heruijun.com.androidinterview.fragment.account.LoginFragment;
-import interview.heruijun.com.androidinterview.fragment.account.RegFragment;
+import interview.heruijun.com.moduleuser.R;
+import interview.heruijun.com.moduleuser.fragment.account.AccountListener;
+import interview.heruijun.com.moduleuser.fragment.account.LoginFragment;
+import interview.heruijun.com.moduleuser.fragment.account.RegFragment;
 
+@Route(path = RouterPath.PATH_USER)
 public class AccountActivity extends BaseActivity implements AccountListener {
 
     private Fragment mLoginFragment;
