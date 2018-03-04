@@ -1,5 +1,6 @@
 package interview.heruijun.com.modulewebview.normalwebview;
 
+import android.webkit.ConsoleMessage;
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
@@ -24,5 +25,12 @@ public class BaseWebChromeClient extends WebChromeClient {
     @Override
     public void onProgressChanged(WebView view, int newProgress) {
         super.onProgressChanged(view, newProgress);
+    }
+
+    @Override
+    public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+        // js输入的Log内容，console.log(...)
+        String msg = consoleMessage.message();
+        return super.onConsoleMessage(consoleMessage);
     }
 }
