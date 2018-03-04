@@ -1,4 +1,4 @@
-package interview.heruijun.com.androidinterview.normalwebview;
+package interview.heruijun.com.modulewebview.activity;
 
 import android.os.Build;
 import android.webkit.WebView;

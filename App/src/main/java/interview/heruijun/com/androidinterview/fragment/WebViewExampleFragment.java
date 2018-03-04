@@ -12,8 +12,8 @@ import com.heruijun.baselibrary.fragment.BaseFragment;
 
 import butterknife.BindView;
 import interview.heruijun.com.androidinterview.R;
-import interview.heruijun.com.androidinterview.normalwebview.MyWebChromeClient;
-import interview.heruijun.com.androidinterview.normalwebview.MyWebview;
+import interview.heruijun.com.modulewebview.normalwebview.BaseWebChromeClient;
+import interview.heruijun.com.modulewebview.normalwebview.BaseWebview;
 
 /**
  * Created by heruijun on 2018/3/3.
@@ -24,7 +24,7 @@ public class WebViewExampleFragment extends BaseFragment {
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;
 
-    MyWebview mWebView;
+    BaseWebview mWebView;
 
     public static WebViewExampleFragment newInstance() {
         WebViewExampleFragment webViewExampleFragment = new WebViewExampleFragment();
@@ -40,12 +40,12 @@ public class WebViewExampleFragment extends BaseFragment {
     protected void initWidget(View root) {
         super.initWidget(root);
 
-        mWebView = new MyWebview(getActivity().getApplicationContext());
+        mWebView = new BaseWebview(getActivity().getApplicationContext());
         LinearLayout layout = root.findViewById(R.id.webview_container);
         layout.addView(mWebView);
 
         mWebView.loadUrl("https://www.oppo.com/cn/");
-        mWebView.setWebChromeClient(new MyWebChromeClient() {
+        mWebView.setWebChromeClient(new BaseWebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 Log.e("newProgress", newProgress + "");
@@ -69,7 +69,6 @@ public class WebViewExampleFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         if (mWebView != null) {
-
             // 如果先调用destroy()方法，则会命中if (isDestroyed()) return;这一行代码，需要先onDetachedFromWindow()，再
             // destory()
             ViewParent parent = mWebView.getParent();

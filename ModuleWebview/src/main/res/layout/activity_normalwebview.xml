@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Native调用js"/>
 
-    <interview.heruijun.com.androidinterview.normalwebview.MyWebview
+    <interview.heruijun.com.modulewebview.normalwebview.BaseWebview
         android:id="@+id/mWebviewExample"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

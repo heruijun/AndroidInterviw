@@ -72,7 +72,6 @@ public class ThreadPoolActivity extends BaseActivity {
 
     RecyclerAdapter<String> adapter;
 
-
     private static final String LINE_0 = "定长线程池（FixedThreadPool）";
     private static final String LINE_1 = "定时线程池（ScheduledThreadPool）";
     private static final String LINE_2 = "可缓存线程池（CachedThreadPool）";

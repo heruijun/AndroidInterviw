@@ -1,1 +1,1 @@
-include ':App', ':JsBridge', ':ModuleDesignPatterns', ':ModuleArithmetic', ':ModuleJavaTest', ':BaseLibrary', ':Lang', ':Provider', ':ModuleMyApp', ':ModuleMemory', ':ModuleThreadPool'
+include ':App', ':ModuleDesignPatterns', ':ModuleArithmetic', ':ModuleJavaTest', ':BaseLibrary', ':Lang', ':Provider', ':ModuleMyApp', ':ModuleMemory', ':ModuleThreadPool', ':ModuleWebview'

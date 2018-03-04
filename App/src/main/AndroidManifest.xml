@@ -39,20 +39,9 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.NextActivity">
-            <intent-filter>
-                <action android:name="com.interview.next" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity android:name=".activity.DispatcherViewActivity" />
         <activity
-            android:name=".webview.BrowserActivity"
-            android:process=":com.inverview.browser" />
-        <activity android:name=".webview.WebviewActivity" />
-        <activity
-            android:name=".normalwebview.NormalwebviewActivity"
+            android:name="interview.heruijun.com.modulewebview.activity.NormalwebviewActivity"
             android:label="@string/title_activity_normalwebview"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.DispatcherExampleActivity" />

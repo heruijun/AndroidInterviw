@@ -1,4 +1,4 @@
-package interview.heruijun.com.androidinterview.normalwebview;
+package interview.heruijun.com.modulewebview.normalwebview;
 
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -8,12 +8,12 @@ import android.widget.Toast;
  * Created by heruijun on 2018/1/15.
  */
 
-public class MyWebviewClient extends WebViewClient {
+public class BaseWebviewClient extends WebViewClient {
 
-    private MyWebview myWebview;
+    private BaseWebview myWebview;
     private static final String SCHEMA = "wkjs";
 
-    public MyWebviewClient(MyWebview myWebview) {
+    public BaseWebviewClient(BaseWebview myWebview) {
         this.myWebview = myWebview;
     }
 

@@ -47,7 +47,6 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
-    compile 'com.tencent.sonic:sdk:2.0.0'
     compile 'com.alipay.euler:andfix:0.5.0@aar'
 
     // most often used way, enable notification to notify block event

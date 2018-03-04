@@ -1,4 +1,4 @@
-package interview.heruijun.com.androidinterview.normalwebview;
+package interview.heruijun.com.modulewebview.normalwebview;
 
 import android.content.Context;
 import android.os.Build;
@@ -10,14 +10,14 @@ import android.webkit.WebView;
  * Created by heruijun on 2018/1/15.
  */
 
-public class MyWebview extends WebView {
+public class BaseWebview extends WebView {
 
-    public MyWebview(Context context) {
+    public BaseWebview(Context context) {
         super(context);
         init();
     }
 
-    public MyWebview(Context context, AttributeSet attrs) {
+    public BaseWebview(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
@@ -30,7 +30,7 @@ public class MyWebview extends WebView {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             WebView.setWebContentsDebuggingEnabled(true);
         }
-        this.setWebViewClient(new MyWebviewClient(this));
-        this.setWebChromeClient(new MyWebChromeClient());
+        this.setWebViewClient(new BaseWebviewClient(this));
+        this.setWebChromeClient(new BaseWebChromeClient());
     }
 }

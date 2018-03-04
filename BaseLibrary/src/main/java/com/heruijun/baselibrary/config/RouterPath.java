@@ -15,7 +15,10 @@ public class RouterPath {
     // 内存泄漏研究
     public static final String PATH_MEMORY = "/memory/analyze";
 
-
+    // 线程池研究
     public static final String PATH_THREADPOOL = "/thread/pool";
+
+    // webview学习研究
+    public static final String PATH_WEBVIEW = "/webview/use";
 
 }

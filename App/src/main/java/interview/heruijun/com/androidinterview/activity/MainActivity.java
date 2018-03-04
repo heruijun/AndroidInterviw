@@ -26,7 +26,6 @@ import java.util.List;
 import butterknife.BindView;
 import interview.heruijun.com.androidinterview.R;
 import interview.heruijun.com.androidinterview.classloader.ClassloaderActivity;
-import interview.heruijun.com.androidinterview.normalwebview.NormalwebviewActivity;
 import interview.heruijun.com.androidinterview.service.ServiceActivity;
 
 /**
@@ -38,16 +37,16 @@ public class MainActivity extends BaseActivity {
     private static final String TAG = "MainActivity";
 
     private static final String LINE_0 = "Activity相关";
-    private static final String LINE_1 = "普通webview";
+    private static final String LINE_1 = "Webview研究";
     private static final String LINE_2 = "一个小型完整的APP";
     private static final String LINE_3 = "获取当前进程";
-    private static final String LINE_4 = "Android动画";
+    private static final String LINE_4 = "界面动画与UI库";
     private static final String LINE_5 = "Handler正常用法";
     private static final String LINE_6 = "线程池用法";
     private static final String LINE_7 = "内存泄漏研究";
     private static final String LINE_8 = "列表的事件分发";
     private static final String LINE_9 = "事件分发机制";
-    private static final String LINE_10 = "service用法";
+    private static final String LINE_10 = "service与进程保活";
     private static final String LINE_11 = "插件化与热修复";
 
     private List<String> lines = Arrays.asList(
@@ -87,6 +86,31 @@ public class MainActivity extends BaseActivity {
 
         // ActivityMgr.getInstance().addActivity(this);     // 模拟内存泄漏
 
+        printURI();
+
+        adapter = new RecyclerAdapter<String>(lines, new RecyclerAdapter.AdapterListenerImpl<String>() {
+            @Override
+            public void onItemClick(RecyclerAdapter.ViewHolder holder, String line) {
+                bindLine(line);
+            }
+        }) {
+            @Override
+            protected ViewHolder<String> onCreateViewHolder(View root, int viewType) {
+                return new MainActivity.ViewHolder(root);
+            }
+
+            @Override
+            protected int getItemViewType(int position, String s) {
+                return R.layout.list_item;
+            }
+        };
+        recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void printURI() {
         Uri uri = getIntent().getData();
         if (uri != null) {
             // 完整的url信息
@@ -114,28 +138,6 @@ public class MainActivity extends BaseActivity {
             String name = uri.getQueryParameter("name");
             Log.e(TAG, "name: " + name);
         }
-        // ARouter.getInstance().build(uri).navigation();
-
-        adapter = new RecyclerAdapter<String>(lines, new RecyclerAdapter.AdapterListenerImpl<String>() {
-            @Override
-            public void onItemClick(RecyclerAdapter.ViewHolder holder, String line) {
-                bindLine(line);
-            }
-        }) {
-            @Override
-            protected ViewHolder<String> onCreateViewHolder(View root, int viewType) {
-                return new MainActivity.ViewHolder(root);
-            }
-
-            @Override
-            protected int getItemViewType(int position, String s) {
-                return R.layout.list_item;
-            }
-        };
-        recyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapter);
     }
 
     private void bindLine(String line) {
@@ -144,7 +146,7 @@ public class MainActivity extends BaseActivity {
                 ARouter.getInstance().build(RouterPath.PATH_ACTIVITY).navigation();
                 break;
             case LINE_1:
-                startActivity(new Intent(MainActivity.this, NormalwebviewActivity.class));
+                ARouter.getInstance().build(RouterPath.PATH_WEBVIEW).navigation();
                 break;
             case LINE_2:
                 // Toast.makeText(MainActivity.this, Utils.createUUID(), Toast.LENGTH_SHORT).show();    // UUID生成

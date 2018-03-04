@@ -1,4 +1,4 @@
-package interview.heruijun.com.androidinterview.normalwebview;
+package interview.heruijun.com.modulewebview.normalwebview;
 
 import android.webkit.JsPromptResult;
 import android.webkit.JsResult;
@@ -9,7 +9,8 @@ import android.webkit.WebView;
  * Created by heruijun on 2018/1/15.
  */
 
-public class MyWebChromeClient  extends WebChromeClient {
+public class BaseWebChromeClient extends WebChromeClient {
+
     @Override
     public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
         return false;

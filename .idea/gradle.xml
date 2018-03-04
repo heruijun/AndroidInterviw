@@ -10,7 +10,6 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/App" />
             <option value="$PROJECT_DIR$/BaseLibrary" />
-            <option value="$PROJECT_DIR$/JsBridge" />
             <option value="$PROJECT_DIR$/Lang" />
             <option value="$PROJECT_DIR$/ModuleArithmetic" />
             <option value="$PROJECT_DIR$/ModuleDesignPatterns" />
@@ -18,6 +17,7 @@
             <option value="$PROJECT_DIR$/ModuleMemory" />
             <option value="$PROJECT_DIR$/ModuleMyApp" />
             <option value="$PROJECT_DIR$/ModuleThreadPool" />
+            <option value="$PROJECT_DIR$/ModuleWebview" />
             <option value="$PROJECT_DIR$/Provider" />
           </set>
         </option>
