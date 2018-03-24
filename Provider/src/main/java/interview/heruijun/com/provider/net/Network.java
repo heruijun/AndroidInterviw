@@ -1,7 +1,14 @@
 package interview.heruijun.com.provider.net;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
 import java.io.IOException;
 
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.ObservableTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -35,15 +42,10 @@ public class Network {
                         @Override
                         public Response intercept(Interceptor.Chain chain) throws IOException {
                             Request original = chain.request();
-
                             Request.Builder builder = original.newBuilder();
-
                             // 此处可以保存业务层token
-
                             builder.addHeader("Content-Type", "application/json");
-
                             Request request = builder.build();
-
                             return chain.proceed(request);
                         }
                     });
@@ -64,7 +66,8 @@ public class Network {
                     Retrofit.Builder builder = new Retrofit.Builder()
                             .baseUrl(apiUrl)
                             .client(client)
-                            .addConverterFactory(GsonConverterFactory.create(Factory.getGson()));
+                            .addConverterFactory(GsonConverterFactory.create(Factory.getGson()))
+                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create());
                     instance.retrofit = builder.build();
                 }
             }
@@ -78,5 +81,14 @@ public class Network {
 
     public static RemoteService remote() {
         return with(RemoteService.class);
+    }
+
+    public static final class NetworkTransformer<T> implements ObservableTransformer<T, T> {
+
+        @Override
+        public ObservableSource<T> apply(Observable<T> upstream) {
+            // 订阅时在io线程，回来接受时在主线程
+            return upstream.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        }
     }
 }
