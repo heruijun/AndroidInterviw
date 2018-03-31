@@ -1,5 +1,7 @@
 package com.heruijun.baselibrary.presenter;
 
+import com.heruijun.baselibrary.RxManager;
+
 /**
  * Created by heruijun on 2018/2/27.
  */
@@ -20,6 +22,8 @@ public abstract class BasePresenter<T extends BaseContract.View> implements Base
         return mView;
     }
 
+    public RxManager rxManager = new RxManager();
+
     @Override
     public void start() {
         if (mView != null) {
@@ -29,8 +33,11 @@ public abstract class BasePresenter<T extends BaseContract.View> implements Base
 
     @Override
     public void destroy() {
-        if (mView != null)
+        if (mView != null) {
             mView.setPresenter(null);
+        }
+        rxManager.clear();
+        rxManager = null;
         mView = null;
     }
 }

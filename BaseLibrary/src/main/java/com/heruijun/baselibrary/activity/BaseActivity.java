@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
+
     protected PlaceHolderView mPlaceHolderView;
 
     @Override
@@ -45,8 +46,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void initWidows() {
+
     }
 
+    /**
+     * 布局文件加载
+     *
+     * @return
+     */
     @LayoutRes
     protected abstract int getContentLayoutId();
 
@@ -59,6 +66,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void initData() {
+
     }
 
     protected final void setPlaceHolderView(PlaceHolderView view) {

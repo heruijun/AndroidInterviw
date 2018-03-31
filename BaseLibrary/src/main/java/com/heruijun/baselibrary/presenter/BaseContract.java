@@ -11,12 +11,14 @@ import com.heruijun.baselibrary.recycler.RecyclerAdapter;
 public interface BaseContract {
 
     interface Presenter {
+
         void start();
 
         void destroy();
     }
 
     interface View<T extends Presenter> {
+
         void setPresenter(T presenter);
 
         void showError(@StringRes int str);
@@ -25,6 +27,7 @@ public interface BaseContract {
     }
 
     interface RecycleView<ViewModel, T extends Presenter> extends View<T> {
+
         void onAdapterDataChanged();
 
         RecyclerAdapter<ViewModel> getRecyclerAdapter();

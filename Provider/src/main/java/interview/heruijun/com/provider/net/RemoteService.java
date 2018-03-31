@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface RemoteService {
 
-    @GET("Android/30/{pageNo}")
+    @GET("Android/20/{pageNo}")
     Observable<RspModel<List<Gank>>> searchGank(@Path(value = "pageNo", encoded = true) int pageNo);
 
 }
