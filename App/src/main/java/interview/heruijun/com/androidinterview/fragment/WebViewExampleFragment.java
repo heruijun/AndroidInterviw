@@ -50,7 +50,7 @@ public class WebViewExampleFragment extends BaseFragment {
             public void onProgressChanged(WebView view, int newProgress) {
                 Log.e("newProgress", newProgress + "");
                 mProgressBar.setProgress(newProgress);
-                if (newProgress >= 100) {
+                if (newProgress >= 80) {
                     mProgressBar.setVisibility(View.GONE);
                 }
             }

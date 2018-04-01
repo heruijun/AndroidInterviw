@@ -104,7 +104,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     public final void add(Data... dataList) {
         if (dataList == null || dataList.length == 0)
             return;
-        int startPos = mDataList.size() - 1;
+        int startPos = mDataList.size();
         Collections.addAll(mDataList, dataList);
         notifyItemRangeInserted(startPos, dataList.length);
     }
@@ -112,7 +112,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     public final void add(Collection<Data> dataList) {
         if (dataList == null || dataList.size() == 0)
             return;
-        int startPos = mDataList.size() - 1;
+        int startPos = mDataList.size();
         mDataList.addAll(dataList);
         notifyItemRangeInserted(startPos, dataList.size());
     }

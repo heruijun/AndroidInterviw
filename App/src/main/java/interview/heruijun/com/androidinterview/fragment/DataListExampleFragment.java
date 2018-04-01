@@ -11,6 +11,9 @@ import com.heruijun.baselibrary.fragment.PresenterFragment;
 import com.heruijun.baselibrary.recycler.DividerItemDecoration;
 import com.heruijun.baselibrary.recycler.RecyclerAdapter;
 import com.heruijun.baselibrary.widget.EmptyView;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.List;
 
@@ -30,8 +33,11 @@ public class DataListExampleFragment extends PresenterFragment<SearchContract.Pr
     @BindView(R.id.empty)
     EmptyView mEmptyView;
 
+    @BindView(R.id.refreshLayout)
+    RefreshLayout mRefreshLayout;
+
     @BindView(R.id.recyclerview)
-    RecyclerView mRecycler;
+    RecyclerView mRecyclerView;
 
     private RecyclerAdapter<Gank> mAdapter;
     private int pageNo = 1;
@@ -52,9 +58,28 @@ public class DataListExampleFragment extends PresenterFragment<SearchContract.Pr
     @Override
     protected void initWidget(View root) {
         super.initWidget(root);
+        mEmptyView.bind(mRecyclerView);
+        setPlaceHolderView(mEmptyView);
 
-        mRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecycler.setAdapter(mAdapter = new RecyclerAdapter<Gank>() {
+        mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshlayout) {
+                pageNo = 1;
+                search(pageNo);
+                refreshlayout.finishRefresh();
+            }
+        });
+        mRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(RefreshLayout refreshlayout) {
+                pageNo++;
+                search(pageNo);
+                refreshlayout.finishLoadMore();
+            }
+        });
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setAdapter(mAdapter = new RecyclerAdapter<Gank>() {
             @Override
             protected ViewHolder<Gank> onCreateViewHolder(View root, int viewType) {
                 return new DataListExampleFragment.ViewHolder(root);
@@ -62,16 +87,14 @@ public class DataListExampleFragment extends PresenterFragment<SearchContract.Pr
 
             @Override
             protected int getItemViewType(int position, Gank gank) {
-                if(gank.getImages() == null) {
+                if (gank.getImages() == null) {
                     return R.layout.list_gank_item;
                 } else {
                     return R.layout.list_gank_item_images;
                 }
             }
         });
-        mRecycler.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
-        mEmptyView.bind(mRecycler);
-        setPlaceHolderView(mEmptyView);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
     }
 
     @Override
@@ -86,7 +109,11 @@ public class DataListExampleFragment extends PresenterFragment<SearchContract.Pr
 
     @Override
     public void onSearchDone(List<Gank> ganks) {
-        mAdapter.add(ganks);
+        if (pageNo == 1) {
+            mAdapter.replace(ganks);
+        } else {
+            mAdapter.add(ganks);
+        }
         mEmptyView.triggerOkOrEmpty(mAdapter.getItems().size() > 0);
     }
 

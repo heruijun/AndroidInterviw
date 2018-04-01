@@ -9,7 +9,6 @@ import interview.heruijun.com.provider.model.api.gank.Gank;
 /**
  * Created by heruijun on 2018/3/1.
  */
-
 public class SearchContract {
 
     public interface Presenter extends BaseContract.Presenter {
