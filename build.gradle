@@ -6,7 +6,6 @@ buildscript {
     ext.butterknifeVersion = '8.8.1'
     ext.retrofitVersion = '2.1.0'
 
-    // ext.android_support_version='27.0.2'
     repositories {
         mavenCentral()
         google()
@@ -17,8 +16,6 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
     }
 }
 
